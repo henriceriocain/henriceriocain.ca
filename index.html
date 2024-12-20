@@ -1,0 +1,204 @@
+<!-- Fixes to implement -->
+    <!-- Fix the x button following smoothness-->
+    <!-- Fix the smoothness of the card minimiaing, slight ghosting -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>hnricriocnprtfo</title>
+    <link rel="stylesheet" href="styles.css"/>
+
+    <!-- ======================================
+          FAVICONS
+    ====================================== -->
+    <link rel="apple-touch-icon" sizes="180x180" href="favicons/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicons/favicon-16x16.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="favicons/android-chrome-192x192.png">
+    <link rel="icon" type="image/png" sizes="512x512" href="favicons/android-chrome-512x512.png">
+    <link rel="icon" type="image/x-icon" href="favicons/favicon.ico">
+  </head>
+  
+  <body>
+    <!-- ======================================
+          NAVIGATION BAR
+    ====================================== -->
+    <nav class="navbar">
+      <a href="#home">home</a>
+      <a href="#projects">projects</a>
+      <a href="#skills">skills</a>
+      <a href="#contact">contact</a>
+    </nav>
+
+    <!-- ======================================
+          HOME SECTION
+    ====================================== -->
+    <div class="sway-element">
+      <section id="home" class="hidden">
+        <h1 id="typingTarget" class="hidden" aria-live="polite"></h1>
+      </section>
+    </div>
+
+    <!-- ======================================
+          PROJECTS SECTION
+    ====================================== -->
+    <section id="projects" class="sway-element">
+      <div class="projects-container">
+        
+        <div class="projects-title hidden">
+          <h2 id="projectsTypingTarget" aria-live="polite"></h2>
+        </div>
+
+        <div class="projects-cards">
+          <div class="hidden">
+            <div class="card henriAI-card">
+              <div class="card-header">
+                <h2>HenriAI</h2>
+                <p class="brief-description"> 
+                  A custom conversational AI model that I developed using GPT-Neo, designed to engage in rich, human-like dialogues. It emphasizes personalized responses and a natural, dynamic communication style. Fine-tuned and customized, HenriAI integrates machine learning techniques for improved conversational fluidity and context retention.
+                </p>
+              </div>
+              <div class="card-content hidden-content">
+                <div class="detailed-overview">
+                  <h4>Overview</h4>
+                  <p>
+                    HenriAI is a custom conversational AI model developed with GPT-Neo. It aims for rich, human-like dialogues, personalized responses, and a natural communication style. The model is fine-tuned and customized to improve conversational fluidity and context retention.
+                  </p>
+                </div>
+                <div>
+                  <h4>Technical Highlights</h4>
+                  <p><b>Model Base:</b> Built on GPT-Neo 1.3B for coherent responses.</p>
+                  <p><b>Fine-Tuning & Optimization:</b> Utilizes AdamW and mixed precision for efficiency.</p>
+                  <p><b>Custom Training Data:</b> Specialized datasets ensure personality-consistent responses.</p>
+                </div>
+                <div>
+                  <h4>Features</h4>
+                  <p><b>Robust Language Generation:</b> Contextually relevant conversation capabilities.</p>
+                  <p><b>Optimized Performance:</b> Efficiency-focused training pipeline enhances responsiveness.</p>
+                  <p><b>Custom Dataset:</b> Tailored sets for more natural interactions.</p>
+                </div>
+                <div>
+                  <h4>Current Challenges</h4>
+                  <p>Improving persona embodiment and coherence.</p>
+                  <p>Reducing irrelevant responses.</p>
+                  <p>Addressing resource constraints for larger models.</p>
+                </div>
+                <div>
+                  <h4>Repository</h4>
+                  <p>
+                    <a href="https://github.com/henriceriocain/HenriAI" class="repo_link" target="_blank" rel="noopener noreferrer">Press on me!</a>
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="lower-projects hidden">
+            <div class="card binaryTranslator-card">
+              <div class="card-header">
+                <h2>Binary to RISC Translator</h2>
+                <p class="brief-description">
+                  Converts binary code into a streamlined 16-bit RISC instruction set for improved efficiency in embedded systems.
+                </p>
+              </div>
+              <div class="card-content hidden-content">
+                <div class="detailed-overview">
+                  <h4>Overview</h4>
+                  <p>
+                    Cachexx is a binary-to-16-bit RISC instruction set conversion tool. It streamlines data processing for embedded systems by translating binary code into a simplified RISC format, demonstrating low-level programming and instruction set design skills.
+                  </p>
+                </div>
+                <div>
+                  <h4>Technical Highlights</h4>
+                  <p><b>Binary to RISC Conversion:</b> Creates compact, 16-bit RISC instructions.</p>
+                  <p><b>Custom Opcode Mapping:</b> Optimizes processing speed and memory usage.</p>
+                  <p><b>Memory Efficiency:</b> Ideal for resource-constrained systems.</p>
+                </div>
+                <div>
+                  <h4>Repository</h4>
+                  <p>
+                    <a href="https://github.com/henriceriocain/Binary_Translator" class="repo_link" target="_blank" rel="noopener noreferrer">Press on me!</a>
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div class="card proj3-card">
+              <div class="card-header">
+                <h2>Upcoming Project</h2>
+                <p class="brief-description">Coming soon...</p>
+              </div>
+              <div class="card-content hidden-content">
+                <div class="detailed-overview">
+                  <p>Coming soon...</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================================
+          SKILLS SECTION
+    ====================================== -->
+    <section id="skills" class="sway-element">
+      <div class="skills-container">
+        
+        <div class="skills-title hidden">
+          <h2 id="skillsTypingTarget" aria-live="polite"></h2>
+        </div>
+
+        <div class="skills-content">
+          <div class="skill-section hidden">
+            <h2>Programming Languages:</h2>
+            <div class="skillsContainer">
+              <div><h3>JavaScript</h3></div>
+              <div><h3>HTML</h3></div>
+              <div><h3>CSS</h3></div>
+              <div><h3>Java</h3></div>
+              <div><h3>C</h3></div>
+              <div><h3>Python</h3></div>
+            </div>
+          </div>
+          <div class="skill-section hidden">
+            <h2>Database Management:</h2>
+            <div class="skillsContainer">
+              <div><h3>MySQL</h3></div>
+            </div>
+          </div>
+          <div class="skill-section hidden">
+            <h2>Version Control:</h2>
+            <div class="skillsContainer">
+              <div><h3>Git</h3></div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ======================================
+          CONTACT SECTION
+    ====================================== -->
+    <section id="contact" class="sway-element">
+      <div class="contact-title hidden">
+        <h2 id="contactTypingTarget" aria-live="polite"></h2>
+      </div>
+      <div class="hidden">
+        <p><b>email:</b> <span id="contactEmail">henriceriocain@dal.ca</span></p>
+        <p><b>linkedin:</b> <a href="https://www.linkedin.com/in/henriceriocain/" target="_blank" rel="noopener noreferrer">henriceriocain</a></p>
+        <p><b>github:</b> <a href="https://github.com/henriceriocain" target="_blank" rel="noopener noreferrer">henriceriocain</a></p>
+        <p><b>resume:</b> <a href="/HenriCerioCainResume.pdf" target="_blank" rel="noopener noreferrer">click here!</a></p>
+      </div>
+    </section>
+
+    <!-- ======================================
+          JAVASCRIPT FILE
+    ====================================== -->
+    <script src="script.js"></script>
+  </body>
+</html>
