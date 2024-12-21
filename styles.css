@@ -585,3 +585,40 @@ body.expanded-mode .navbar {
     margin-bottom: 150px;
   }
 }
+
+@media only screen and (max-width: 600px) {
+
+  .navbar {
+    width: 100%;
+  }
+
+  #home h1 {
+    font-size: 60px;
+  }
+
+  .projects-title h2 {
+    font-size: 45px;
+  }
+
+  .lower-projects {
+    flex-direction: column;
+  }
+
+  .lower-projects .card {
+    width: 100%;      
+    max-width: none;       
+  }
+
+  .skills-title h2 {
+    font-size: 45px;
+  }
+
+  .contact-title h2 {
+    font-size: 45px;
+  }
+
+  #contact p,a {
+    font-size: 20px;
+  }
+
+}
