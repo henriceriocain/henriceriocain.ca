@@ -136,6 +136,9 @@ document.addEventListener("DOMContentLoaded", function() {
       touchStartY = e.touches[0].clientY;
     }
     function handleTouchMove(e) {
+      if (cloneCard.scrollTop === 0) {
+        e.preventDefault(); // Add this line to fix iOS scrolling
+      }
       const currentY = e.touches[0].clientY;
       const touchDiff = currentY - touchStartY;
       if (cloneCard.scrollTop === 0 && touchDiff > 0) {
@@ -156,8 +159,8 @@ document.addEventListener("DOMContentLoaded", function() {
       }
     }
     cloneCard.addEventListener('wheel', handleWheel);
-    cloneCard.addEventListener('touchstart', handleTouchStart);
-    cloneCard.addEventListener('touchmove', handleTouchMove);
+    cloneCard.addEventListener('touchstart', handleTouchStart, { passive: false });  
+    cloneCard.addEventListener('touchmove', handleTouchMove, { passive: false });   
     cloneCard.addEventListener('touchend', handleTouchEnd);
     removeScrollUpListeners = function() {
       cloneCard.removeEventListener('wheel', handleWheel);
