@@ -1,9 +1,12 @@
 document.addEventListener("DOMContentLoaded", function() {
-  /* ======================================
-     SWAY EFFECT
-  ====================================== */
+  let cloneCard = null;
+  let isMouseDown = false;
+  let pressedCard = null;
+  let removeScrollUpListeners = null;
+
+  // SWAY EFFECT
   const swayElements = document.querySelectorAll('.sway-element:not(.fullscreen-card)');
-  
+  let swayRequestId = null;
   function handleSwayMouseMove(event) {
     if (window.innerWidth < 768) return;
     const { clientX, clientY } = event;
@@ -11,7 +14,6 @@ document.addEventListener("DOMContentLoaded", function() {
     const windowHeight = window.innerHeight;
     const xPercent = (clientX / windowWidth - 0.5) * 2;
     const yPercent = (clientY / windowHeight - 0.5) * 2;
-
     swayElements.forEach(element => {
       const rotateY = xPercent * 5;
       const rotateX = -yPercent * 5;
@@ -20,14 +22,11 @@ document.addEventListener("DOMContentLoaded", function() {
       element.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg) translate(${translateX}px, ${translateY}px)`;
     });
   }
-
   function handleSwayMouseLeave() {
     swayElements.forEach(element => {
       element.style.transform = `rotateX(0deg) rotateY(0deg) translate(0px,0px)`;
     });
   }
-
-  let swayRequestId = null;
   document.addEventListener('mousemove', (event) => {
     if (swayRequestId) return;
     swayRequestId = requestAnimationFrame(() => {
@@ -37,10 +36,7 @@ document.addEventListener("DOMContentLoaded", function() {
   });
   document.addEventListener('mouseleave', handleSwayMouseLeave);
 
-
-  /* ======================================
-     SCROLL REVEAL
-  ====================================== */
+  // SCROLL REVEAL
   const hiddenElements = document.querySelectorAll('.hidden');
   const revealObserver = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
@@ -53,10 +49,7 @@ document.addEventListener("DOMContentLoaded", function() {
   }, { threshold: 0.1 });
   hiddenElements.forEach(el => revealObserver.observe(el));
 
-
-  /* ======================================
-     ACTIVE NAVBAR LINK
-  ====================================== */
+  // ACTIVE NAVBAR LINK
   const sections = document.querySelectorAll('section');
   const navLinks = document.querySelectorAll('.navbar a');
   const sectionObserver = new IntersectionObserver((entries) => {
@@ -70,16 +63,12 @@ document.addEventListener("DOMContentLoaded", function() {
   }, { threshold: 0.6 });
   sections.forEach(section => sectionObserver.observe(section));
 
-
-  /* ======================================
-     TYPING ANIMATION
-  ====================================== */
+  // TYPING ANIMATION
   function createTypingAnimation(element, text, speed, onComplete) {
     let index = 0;
     let timeoutId;
     element.textContent = '';
     element.classList.remove('blink');
-
     function type() {
       if (index < text.length) {
         element.textContent += text.charAt(index);
@@ -90,18 +79,15 @@ document.addEventListener("DOMContentLoaded", function() {
         if (onComplete) onComplete();
       }
     }
-
     type();
     return () => clearTimeout(timeoutId);
   }
-
   const typingConfigs = [
     { target: document.getElementById('typingTarget'), text: "Hi, I'm Henri", speed: 75, observerTarget: document.getElementById('home') },
     { target: document.getElementById('projectsTypingTarget'), text: "Projects", speed: 85, observerTarget: document.querySelector('.projects-title') },
     { target: document.getElementById('skillsTypingTarget'), text: "Skills", speed: 83, observerTarget: document.querySelector('.skills-title') },
     { target: document.getElementById('contactTypingTarget'), text: "Get in touch", speed: 82, observerTarget: document.querySelector('.contact-title') },
   ];
-
   const typingCancelers = {};
   typingConfigs.forEach(config => {
     const { target, text, speed, observerTarget } = config;
@@ -123,179 +109,66 @@ document.addEventListener("DOMContentLoaded", function() {
     observer.observe(observerTarget);
   });
 
-
-  /* ======================================
-     CARD EXPANSION LOGIC
-  ====================================== */
-  let cloneCard = null;
-  let isMouseDown = false;
-  let pressedCard = null;
-
-  function attachCardClickEvents() {
-    const cards = document.querySelectorAll('.card');
-    cards.forEach(card => {
-      if (!card.dataset.listenerAttached) {
-        card.addEventListener('mousedown', () => {
-          isMouseDown = true;
-          card.classList.add('pressed');
-          pressedCard = card;
-        });
-
-        card.addEventListener('mouseup', (e) => {
-          if (pressedCard === card && !e.target.classList.contains('close-button')) {
-            expandCard(card);
-          }
-          setTimeout(() => {
-            if (pressedCard === card) {
-              pressedCard.classList.remove('pressed');
-              pressedCard = null;
-            }
-            isMouseDown = false;
-          }, 100);
-        });
-
-        card.addEventListener('mouseleave', () => {
-          if (isMouseDown && pressedCard === card) {
-            card.classList.remove('pressed');
-            pressedCard = null;
-          }
-        });
-
-        card.dataset.listenerAttached = 'true';
-      }
-    });
-  }
-
-  document.addEventListener('mouseup', () => {
-    isMouseDown = false;
-    if (pressedCard) {
-      pressedCard.classList.remove('pressed');
-      pressedCard = null;
-    }
-  });
-
-  attachCardClickEvents();
-
-  const projectsCardsContainer = document.querySelector('.projects-cards');
-  const skillsContentContainer = document.querySelector('.skills-content');
-
-  const projectsCardsObserver = new MutationObserver(attachCardClickEvents);
-  projectsCardsObserver.observe(projectsCardsContainer, { childList: true, subtree: true });
-  projectsCardsObserver.observe(skillsContentContainer, { childList: true, subtree: true });
-
-
-  /* ======================================
-     EXPAND CARD
-  ====================================== */
+  // SINGLE FULLSCREEN-CARD EXPANSION LOGIC
   function expandCard(originalCard) {
     if (cloneCard) return;
     const rect = originalCard.getBoundingClientRect();
     cloneCard = originalCard.cloneNode(true);
     cloneCard.classList.remove('sway-element');
     cloneCard.classList.add('fullscreen-card');
-
-    const closeButtonContainer = document.createElement('div');
-    closeButtonContainer.style.position = 'fixed';
-    closeButtonContainer.style.top = '0';
-    closeButtonContainer.style.left = '0';
-    closeButtonContainer.style.right = '0';
-    closeButtonContainer.style.zIndex = '1002';
-    closeButtonContainer.style.pointerEvents = 'none';
-
-    const closeButton = document.createElement('button');
-    closeButton.classList.add('close-button');
-    closeButton.textContent = 'X';
-    closeButton.setAttribute('aria-label', 'Close');
-    closeButton.style.opacity = '0';
-    closeButton.style.transition = 'opacity 0.2s ease-in-out';
-    closeButton.style.pointerEvents = 'auto';
-
-    let lastScrollPosition = 100;
-    let velocity = 0;
-    let targetPosition = 0;
-    let currentPosition = 0;
-    let lastTime = Date.now();
-    let scrollTimeout;
-    let bounceTimeout;
-    let animationFrame;
-    let lastVelocities = Array(5).fill(0);
-
-    const scrollHandler = () => {
-      if (!cloneCard) return;
-      const currentScroll = cloneCard.scrollTop;
-      const currentTime = Date.now();
-      const deltaTime = Math.min((currentTime - lastTime) / 1000, 0.064);
-      const scrollDiff = currentScroll - lastScrollPosition;
-      const newVelocity = scrollDiff * 0.1;
-      lastVelocities.shift();
-      lastVelocities.push(newVelocity);
-      const smoothedVelocity = lastVelocities.reduce((a, b) => a + b) / lastVelocities.length;
-      velocity = velocity * 0.85 + smoothedVelocity * 0.15;
-      targetPosition = Math.min(Math.max(velocity * 2.0, -35), 35);
-
-      const updatePosition = () => {
-        const spring = 0.15;
-        const damping = 0.75;
-        const displacement = targetPosition - currentPosition;
-        const springForce = displacement * spring;
-        velocity = (velocity + springForce) * damping;
-        currentPosition += velocity * 0.8;
-        closeButton.style.transform = `translateY(${currentPosition}px)`;
-        if (Math.abs(velocity) > 0.005 || Math.abs(displacement) > 0.005) {
-          animationFrame = requestAnimationFrame(updatePosition);
+    const isCard2 = originalCard.classList.contains('card2');
+    let attemptingClose = false;
+    function handleWheel(e) {
+      if (cloneCard.scrollTop === 0 && e.deltaY < 0) {
+        if (!attemptingClose) {
+          cloneCard.classList.add('ready-to-close');
+          attemptingClose = true;
+        } else {
+          closeFullscreen();
         }
-      };
-
-      cancelAnimationFrame(animationFrame);
-      updatePosition();
-
-      if (currentScroll === 0 && lastScrollPosition > 50) {
-        clearTimeout(bounceTimeout);
-        velocity = 0;
-        currentPosition = 0;
-        targetPosition = 0;
-        cancelAnimationFrame(animationFrame);
-        closeButton.style.transform = '';
-        void closeButton.offsetWidth;
-        closeButton.classList.add('bounce');
-        bounceTimeout = setTimeout(() => {
-          closeButton.classList.remove('bounce');
-        }, 800);
+      } else {
+        attemptingClose = false;
+        cloneCard.classList.remove('ready-to-close');
       }
-
-      lastScrollPosition = currentScroll;
-      lastTime = currentTime;
-      clearTimeout(scrollTimeout);
-      scrollTimeout = setTimeout(() => {
-        targetPosition = 0;
-        updatePosition();
-      }, 200);
+    }
+    let touchStartY = 0;
+    function handleTouchStart(e) {
+      touchStartY = e.touches[0].clientY;
+    }
+    function handleTouchMove(e) {
+      const currentY = e.touches[0].clientY;
+      const touchDiff = currentY - touchStartY;
+      if (cloneCard.scrollTop === 0 && touchDiff > 0) {
+        if (!attemptingClose) {
+          cloneCard.classList.add('ready-to-close');
+          attemptingClose = true;
+        } else if (touchDiff > 100) {
+          closeFullscreen();
+        }
+      } else {
+        attemptingClose = false;
+        cloneCard.classList.remove('ready-to-close');
+      }
+    }
+    function handleTouchEnd() {
+      if (!attemptingClose) {
+        cloneCard.classList.remove('ready-to-close');
+      }
+    }
+    cloneCard.addEventListener('wheel', handleWheel);
+    cloneCard.addEventListener('touchstart', handleTouchStart);
+    cloneCard.addEventListener('touchmove', handleTouchMove);
+    cloneCard.addEventListener('touchend', handleTouchEnd);
+    removeScrollUpListeners = function() {
+      cloneCard.removeEventListener('wheel', handleWheel);
+      cloneCard.removeEventListener('touchstart', handleTouchStart);
+      cloneCard.removeEventListener('touchmove', handleTouchMove);
+      cloneCard.removeEventListener('touchend', handleTouchEnd);
     };
-
-    const cleanup = () => {
-      cancelAnimationFrame(animationFrame);
-      clearTimeout(scrollTimeout);
-      clearTimeout(bounceTimeout);
-    };
-
-    cloneCard.addEventListener('scroll', scrollHandler);
-
-    closeButton.addEventListener('click', (e) => {
-      e.stopPropagation();
-      cleanup();
-      closeButton.style.opacity = '0';
-      closeFullscreen();
-    });
-
-    closeButtonContainer.appendChild(closeButton);
-    document.body.appendChild(closeButtonContainer);
-
     originalCard.classList.add('hidden-state');
-
     setTimeout(() => {
       originalCard.style.visibility = 'hidden';
     }, 200);
-
     Object.assign(cloneCard.style, {
       position: 'fixed',
       top: `${rect.top}px`,
@@ -307,25 +180,25 @@ document.addEventListener("DOMContentLoaded", function() {
       transition: 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)',
       overflowY: 'auto'
     });
-
-    const content = cloneCard.querySelector('.card-content');
-    if (content) content.classList.remove('hidden-content');
-
+    let hiddenContent;
+    if (isCard2) {
+      hiddenContent = cloneCard.querySelector('.card2-hiddencontent');
+    } else {
+      hiddenContent = cloneCard.querySelector('.card-content');
+    }
+    if (hiddenContent) hiddenContent.style.display = 'block';
     document.body.appendChild(cloneCard);
     document.body.classList.add('expanded-mode');
-
     cloneCard.offsetWidth;
-
     cloneCard.classList.add('fullscreen-card');
     setTimeout(() => {
       Object.assign(cloneCard.style, {
         top: '0',
         left: '0',
         width: '100vw',
-        height: '100vh',
+        height: '100vh'
       });
     }, 50);
-
     cloneCard.addEventListener('transitionend', function showContent(e) {
       if (e.propertyName === 'width') {
         cloneCard.removeEventListener('transitionend', showContent);
@@ -333,57 +206,104 @@ document.addEventListener("DOMContentLoaded", function() {
           cloneCard.classList.add('content-ready');
           setTimeout(() => {
             cloneCard.classList.add('content-visible');
-            closeButton.style.opacity = '1';
           }, 50);
         });
       }
     });
   }
-
-
-  /* ======================================
-     CLOSE FULLSCREEN
-  ====================================== */
   function closeFullscreen() {
     if (!cloneCard) return;
-
-    const cloneHeaderText = cloneCard.querySelector('.card-header h2').textContent;
-    const originalCard = Array.from(document.querySelectorAll('.card'))
-      .find(card => card.querySelector('.card-header h2')?.textContent === cloneHeaderText);
-
-    if (!originalCard) return;
-
-    const closeButtonContainer = document.querySelector('.close-button').parentElement;
-    setTimeout(() => {
-      if (closeButtonContainer) {
-        closeButtonContainer.remove();
+    if (removeScrollUpListeners) {
+      removeScrollUpListeners();
+      removeScrollUpListeners = null;
+    }
+    let cloneHeaderText = '';
+    const headerH2 = cloneCard.querySelector('.card-header h2');
+    if (headerH2) cloneHeaderText = headerH2.textContent.trim();
+    let originalCard = null;
+    const allCards = document.querySelectorAll('.card, .card2');
+    for (let card of allCards) {
+      const cardH2 = card.querySelector('.card-header h2');
+      if (cardH2 && cardH2.textContent.trim() === cloneHeaderText) {
+        originalCard = card;
+        break;
       }
-    }, 400);
-
+    }
+    if (!originalCard) {
+      originalCard = document.querySelector('.card2'); 
+    }
     cloneCard.classList.add('closing');
     cloneCard.classList.remove('content-visible');
-
     setTimeout(() => {
       const rect = originalCard.getBoundingClientRect();
       Object.assign(cloneCard.style, {
         top: `${rect.top}px`,
         left: `${rect.left}px`,
         width: `${rect.width}px`,
-        height: `${rect.height}px`,
+        height: `${rect.height}px`
       });
     }, 200);
-
     cloneCard.addEventListener('transitionend', function cleanup(e) {
       if (e.propertyName === 'width') {
         cloneCard.removeEventListener('transitionend', cleanup);
         document.body.removeChild(cloneCard);
         cloneCard = null;
         document.body.classList.remove('expanded-mode');
-
         originalCard.classList.remove('hidden-state');
         originalCard.classList.remove('pressed');
         originalCard.style.visibility = 'visible';
       }
+    });
+  }
+
+  // CARD CLICK EVENT ATTACHMENT
+  function attachCardClickEvents() {
+    const cards = document.querySelectorAll('.card, .card2');
+    cards.forEach(card => {
+      if (!card.dataset.listenerAttached) {
+        card.addEventListener('mousedown', () => {
+          isMouseDown = true;
+          card.classList.add('pressed');
+          pressedCard = card;
+        });
+        card.addEventListener('mouseup', () => {
+          if (pressedCard === card) {
+            expandCard(card);
+          }
+          setTimeout(() => {
+            if (pressedCard === card) {
+              pressedCard.classList.remove('pressed');
+              pressedCard = null;
+            }
+            isMouseDown = false;
+          }, 100);
+        });
+        card.addEventListener('mouseleave', () => {
+          if (isMouseDown && pressedCard === card) {
+            card.classList.remove('pressed');
+            pressedCard = null;
+          }
+        });
+        card.dataset.listenerAttached = 'true';
+      }
+    });
+  }
+  document.addEventListener('mouseup', () => {
+    isMouseDown = false;
+    if (pressedCard) {
+      pressedCard.classList.remove('pressed');
+      pressedCard = null;
+    }
+  });
+  attachCardClickEvents();
+  const projectsCardsContainer = document.querySelector('.projects-cards');
+  if (projectsCardsContainer) {
+    const projectsCardsObserver = new MutationObserver(() => {
+      attachCardClickEvents();
+    });
+    projectsCardsObserver.observe(projectsCardsContainer, { 
+      childList: true, 
+      subtree: true 
     });
   }
 });
