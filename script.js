@@ -118,6 +118,7 @@ document.addEventListener("DOMContentLoaded", function() {
     cloneCard.classList.add('fullscreen-card');
     const isCard2 = originalCard.classList.contains('card2');
     let attemptingClose = false;
+    
     function handleWheel(e) {
       if (cloneCard.scrollTop === 0 && e.deltaY < 0) {
         if (!attemptingClose) {
@@ -131,6 +132,7 @@ document.addEventListener("DOMContentLoaded", function() {
         cloneCard.classList.remove('ready-to-close');
       }
     }
+
     let touchStartY = 0;
     function handleTouchStart(e) {
       touchStartY = e.touches[0].clientY;
@@ -138,8 +140,7 @@ document.addEventListener("DOMContentLoaded", function() {
     function handleTouchMove(e) {
       const currentY = e.touches[0].clientY;
       const touchDiff = currentY - touchStartY;
-      
-      // Only prevent default if trying to pull down when already at top
+      // Only prevent default when pulling down from the top:
       if (cloneCard.scrollTop === 0 && touchDiff > 0) {
         e.preventDefault();
         if (!attemptingClose) {
@@ -158,20 +159,26 @@ document.addEventListener("DOMContentLoaded", function() {
         cloneCard.classList.remove('ready-to-close');
       }
     }
+
+    // Add listeners for scroll-up-close
     cloneCard.addEventListener('wheel', handleWheel);
     cloneCard.addEventListener('touchstart', handleTouchStart, { passive: false });
     cloneCard.addEventListener('touchmove', handleTouchMove, { passive: false });
     cloneCard.addEventListener('touchend', handleTouchEnd);
+
     removeScrollUpListeners = function() {
       cloneCard.removeEventListener('wheel', handleWheel);
       cloneCard.removeEventListener('touchstart', handleTouchStart);
       cloneCard.removeEventListener('touchmove', handleTouchMove);
       cloneCard.removeEventListener('touchend', handleTouchEnd);
     };
+
     originalCard.classList.add('hidden-state');
     setTimeout(() => {
       originalCard.style.visibility = 'hidden';
     }, 200);
+
+    // Make the clone fill the screen with iOS friendly scrolling
     Object.assign(cloneCard.style, {
       position: 'fixed',
       top: `${rect.top}px`,
@@ -181,8 +188,10 @@ document.addEventListener("DOMContentLoaded", function() {
       margin: '0',
       zIndex: '1000',
       transition: 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)',
-      overflowY: 'auto'
+      overflowY: 'auto',
+      WebkitOverflowScrolling: 'touch'
     });
+
     let hiddenContent;
     if (isCard2) {
       hiddenContent = cloneCard.querySelector('.card2-hiddencontent');
@@ -190,10 +199,12 @@ document.addEventListener("DOMContentLoaded", function() {
       hiddenContent = cloneCard.querySelector('.card-content');
     }
     if (hiddenContent) hiddenContent.style.display = 'block';
+
     document.body.appendChild(cloneCard);
     document.body.classList.add('expanded-mode');
-    cloneCard.offsetWidth;
+    cloneCard.offsetWidth; // force reflow
     cloneCard.classList.add('fullscreen-card');
+
     setTimeout(() => {
       Object.assign(cloneCard.style, {
         top: '0',
@@ -202,6 +213,7 @@ document.addEventListener("DOMContentLoaded", function() {
         height: '100vh'
       });
     }, 50);
+
     cloneCard.addEventListener('transitionend', function showContent(e) {
       if (e.propertyName === 'width') {
         cloneCard.removeEventListener('transitionend', showContent);
@@ -214,6 +226,7 @@ document.addEventListener("DOMContentLoaded", function() {
       }
     });
   }
+
   function closeFullscreen() {
     if (!cloneCard) return;
     if (removeScrollUpListeners) {
@@ -246,6 +259,7 @@ document.addEventListener("DOMContentLoaded", function() {
         height: `${rect.height}px`
       });
     }, 200);
+
     cloneCard.addEventListener('transitionend', function cleanup(e) {
       if (e.propertyName === 'width') {
         cloneCard.removeEventListener('transitionend', cleanup);
@@ -291,6 +305,7 @@ document.addEventListener("DOMContentLoaded", function() {
       }
     });
   }
+
   document.addEventListener('mouseup', () => {
     isMouseDown = false;
     if (pressedCard) {
@@ -298,6 +313,7 @@ document.addEventListener("DOMContentLoaded", function() {
       pressedCard = null;
     }
   });
+
   attachCardClickEvents();
   const projectsCardsContainer = document.querySelector('.projects-cards');
   if (projectsCardsContainer) {
