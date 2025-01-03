@@ -120,7 +120,7 @@ document.addEventListener("DOMContentLoaded", function() {
     let attemptingClose = false;
     
     function handleWheel(e) {
-      if (cloneCard.scrollTop === 0 && e.deltaY < 0) {
+      if (cloneCard.scrollTop <= 2 && e.deltaY < 0) {
         if (!attemptingClose) {
           cloneCard.classList.add('ready-to-close');
           attemptingClose = true;
@@ -140,13 +140,14 @@ document.addEventListener("DOMContentLoaded", function() {
     function handleTouchMove(e) {
       const currentY = e.touches[0].clientY;
       const touchDiff = currentY - touchStartY;
-      // Only prevent default when pulling down from the top:
-      if (cloneCard.scrollTop === 0 && touchDiff > 0) {
+
+      // Let user trigger close if near the top, not strictly at scrollTop===0
+      if (cloneCard.scrollTop <= 2 && touchDiff > 0) {
         e.preventDefault();
         if (!attemptingClose) {
           cloneCard.classList.add('ready-to-close');
           attemptingClose = true;
-        } else if (touchDiff > 100) {
+        } else if (touchDiff > 50) { // lower threshold to make it easier
           closeFullscreen();
         }
       } else {
