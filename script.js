@@ -119,8 +119,10 @@ document.addEventListener("DOMContentLoaded", function() {
     const isCard2 = originalCard.classList.contains('card2');
     let attemptingClose = false;
     
+    // Make it easy to trigger close if user scrolls up from near top
     function handleWheel(e) {
-      if (cloneCard.scrollTop <= 2 && e.deltaY < 0) {
+      if (cloneCard.scrollTop <= 10 && e.deltaY < 0) {
+        // If user is near top and scrolls up, make it easy to trigger exit
         if (!attemptingClose) {
           cloneCard.classList.add('ready-to-close');
           attemptingClose = true;
@@ -140,14 +142,13 @@ document.addEventListener("DOMContentLoaded", function() {
     function handleTouchMove(e) {
       const currentY = e.touches[0].clientY;
       const touchDiff = currentY - touchStartY;
-
-      // Let user trigger close if near the top, not strictly at scrollTop===0
-      if (cloneCard.scrollTop <= 2 && touchDiff > 0) {
-        e.preventDefault();
+      // Let user trigger close if near the top, even if not strictly 0
+      if (cloneCard.scrollTop <= 10 && touchDiff > 0) {
+        e.preventDefault(); // block normal scroll so we can do pull-to-close
         if (!attemptingClose) {
           cloneCard.classList.add('ready-to-close');
           attemptingClose = true;
-        } else if (touchDiff > 50) { // lower threshold to make it easier
+        } else if (touchDiff > 25) {
           closeFullscreen();
         }
       } else {
@@ -161,7 +162,6 @@ document.addEventListener("DOMContentLoaded", function() {
       }
     }
 
-    // Add listeners for scroll-up-close
     cloneCard.addEventListener('wheel', handleWheel);
     cloneCard.addEventListener('touchstart', handleTouchStart, { passive: false });
     cloneCard.addEventListener('touchmove', handleTouchMove, { passive: false });
