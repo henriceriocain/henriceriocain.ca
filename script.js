@@ -136,12 +136,12 @@ document.addEventListener("DOMContentLoaded", function() {
       touchStartY = e.touches[0].clientY;
     }
     function handleTouchMove(e) {
-      if (cloneCard.scrollTop === 0) {
-        e.preventDefault(); // Add this line to fix iOS scrolling
-      }
       const currentY = e.touches[0].clientY;
       const touchDiff = currentY - touchStartY;
+      
+      // Only prevent default if trying to pull down when already at top
       if (cloneCard.scrollTop === 0 && touchDiff > 0) {
+        e.preventDefault();
         if (!attemptingClose) {
           cloneCard.classList.add('ready-to-close');
           attemptingClose = true;
@@ -159,8 +159,8 @@ document.addEventListener("DOMContentLoaded", function() {
       }
     }
     cloneCard.addEventListener('wheel', handleWheel);
-    cloneCard.addEventListener('touchstart', handleTouchStart, { passive: false });  
-    cloneCard.addEventListener('touchmove', handleTouchMove, { passive: false });   
+    cloneCard.addEventListener('touchstart', handleTouchStart, { passive: false });
+    cloneCard.addEventListener('touchmove', handleTouchMove, { passive: false });
     cloneCard.addEventListener('touchend', handleTouchEnd);
     removeScrollUpListeners = function() {
       cloneCard.removeEventListener('wheel', handleWheel);
