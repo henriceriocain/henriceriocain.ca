@@ -181,16 +181,17 @@ body.expanded-mode .navbar {
 
 .lower-projects {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: center;
+  align-items: center;
   gap: 30px;
   width: 100%;
   max-width: 600px;
 }
 
 .lower-projects .card {
-  width: calc(50% - 15px);
-  max-width: 285px;
+  width: 100%;
+  max-width: 600px;
 }
 
 /* ======================================
@@ -369,7 +370,7 @@ body.expanded-mode .navbar {
   color: #FFFFFF;
 }
 
-.card:hover, .card2:hover{
+.card:hover, .card2:hover, .card3:hover{
   transform: translateY(-10px);
   box-shadow: 0 10px 15px rgba(0,0,0,0.2);
 }
@@ -464,6 +465,249 @@ body.expanded-mode .navbar {
   opacity: 0;
   transform: translateY(10px);
   transition: opacity 0.2s ease-in-out, transform 0.2s ease-in-out;
+}
+
+/* ======================================
+   DOMYN CARD STYLING (CARD3 - MATCHES HENRI.AI STRUCTURE)
+====================================== */
+.card3 .domyn-container {
+  opacity: 1;
+  transition: opacity 0.2s ease-in-out;
+}
+
+.hidden-state.card3 .domyn-container {
+  opacity: 0;
+}
+
+.card3:not(.hidden-state) .domyn-container {
+  opacity: 1;
+}
+
+.card3 {
+  width: 100%;
+  max-width: 600px;
+  background: #f9f7f6;
+  border-radius: 20px;
+  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+.domyn-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 600px;
+  margin: 0 auto; 
+  border-radius: 20px;
+  position: relative;
+}
+
+.domyn-top {
+  position: relative;
+  width: 100%;
+}
+
+.domyn-background-image {
+  width: 100%;
+  height: 380px;
+  border-radius: 20px;
+  display: block;
+  background-image: url('Domyn/DomynIcon.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-color: #f9f7f6;
+}
+
+.domyn-glass-text {
+  color: #000000;
+  text-shadow: 0 2px 4px rgba(255, 255, 255, 0.9);
+  letter-spacing: 0.3px;
+  font-weight: 500;
+}
+
+.card3 .domyn-text-overlay {
+  position: absolute !important;
+  top: auto !important;
+  bottom: 76px !important;
+  left: 12px;
+  right: 20px;
+  z-index: 3;
+}
+
+.domyn-text-overlay h1 {
+  font-size: 1em;
+  margin: 3px 0;
+  font-weight: 600;
+  line-height: 1.1;
+}
+
+#domyn-top-text {
+  font-size: 0.75em;
+  opacity: 0.8;
+  margin: 0 0 3px 0;
+  line-height: 1.1;
+}
+
+#domyn-bottom-text {
+  font-size: 0.65em;
+  opacity: 0.7;
+  margin: 3px 0 0 0;
+  line-height: 1.1;
+}
+
+.domyn-bottom {
+  background: rgba(0, 0, 0, 0.85);
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.15);
+  backdrop-filter: blur(12.8px);
+  -webkit-backdrop-filter: blur(12.8px);
+  color: white;
+  padding: 15px;
+  border-radius: 0 0 20px 20px;
+  width: 100%;
+  max-width: 600px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+  z-index: 2;
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.domyn-highlight {
+  font-size: 1.5rem;
+  letter-spacing: -0.02em;
+  display: inline-flex;
+  align-items: center;
+  background: linear-gradient(135deg, #ffffff 0%, #e0e0e0 50%, #c0c0c0 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  font-weight: 700;
+}
+
+#domyn-visit-button {
+  background-color: rgba(160, 160, 160, 0.6);
+  color: white;
+  font-weight: bold;
+  padding: 6px 13px;
+  margin-right: 20px;
+  border-radius: 35px; 
+  cursor: default;
+  text-align: center;
+  opacity: 0.8;
+}
+
+.card3-hiddencontent {
+  max-width: 600px;
+  padding: 40px;
+  background: #f9f7f6;
+  border-radius: 0 0 20px 20px;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  display: none;
+}
+
+.card3-hiddencontent h4 {
+  font-size: 18px;
+  margin-top: 30px;
+  color: #000000;
+}
+
+.card3-hiddencontent p {
+  font-size: 16px;
+  margin-bottom: 10px;
+  padding-left: 20px;
+  color: #333333;
+  line-height: 2;
+}
+
+.card3-hiddencontent .repo_link {
+  color: rgb(10, 132, 255);
+  text-decoration: none;
+}
+
+.card3.pressed .domyn-container,
+.card3.pressed .domyn-bottom,
+.card3.pressed .card3-hiddencontent {
+  opacity: 0;
+  transition: opacity 0.2s ease-in-out;
+}
+
+.card3.fullscreen-card.content-visible .domyn-container,
+.card3.fullscreen-card.content-visible .domyn-bottom,
+.card3.fullscreen-card.content-visible .card3-hiddencontent {
+  opacity: 1;
+  transition: opacity 0.3s ease-in-out;
+}
+
+/* Fullscreen overrides for Card3 (Domyn) */
+.card3.fullscreen-card .domyn-top {
+  position: relative;
+  width: 100vw;
+  height: 70vh;
+  border-radius: 20px 20px 0 0;
+  margin-top: -60px;
+  overflow: hidden;
+}
+
+.card3.fullscreen-card .domyn-background-image {
+  width: 100%;
+  height: 100%;
+  background-size: contain;
+  border-radius: 0;
+  background-position: center;
+}
+
+.card3.fullscreen-card .domyn-bottom {
+  display: none;
+}
+
+.card3.fullscreen-card .brand-title {
+  padding-left: 20px;
+}
+
+.card3.fullscreen-card #domyn-visit-button {
+  margin-right: 20px;
+}
+
+.card3.fullscreen-card .card3-hiddencontent {
+  display: block;
+  opacity: 1;
+  transform: translateY(0);
+  margin-top: 20px;
+  padding: 40px 60px;
+  border-radius: 0;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: none;
+  width: 100%;
+}
+
+.card3.fullscreen-card .domyn-container {
+  width: 100%;
+  max-width: none;
+  margin: 0 auto;
+  position: relative;
+  background: transparent;
+}
+
+.card3.fullscreen-card .domyn-text-overlay {
+  display: none;
+}
+
+.card3.fullscreen-card .domyn-text-overlay h1 {
+  font-size: 1.3em;
+}
+
+.card3.fullscreen-card #domyn-top-text {
+  font-size: 0.9em;
+}
+
+.card3.fullscreen-card #domyn-bottom-text {
+  font-size: 0.8em;
 }
 
 /* ======================================
@@ -577,40 +821,80 @@ body.expanded-mode .navbar {
 /* ======================================
    CLOSE INDICATOR (SCROLL UP TO CLOSE)
 ====================================== */
-.fullscreen-card.ready-to-close {
+.fullscreen-card::after {
+  content: '↑';
   position: fixed;
-  width: 100%;
-  height: 100%;
+  left: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 18px;
+  font-weight: bold;
+  z-index: 10001;
+  animation: arrowFadeIn 1.2s ease-out 1s forwards, swipeUpHint 2.5s ease-in-out infinite 2.2s;
+  pointer-events: none;
+  text-shadow: 0 0 8px rgba(255, 255, 255, 0.5);
+  opacity: 0;
 }
 
 .fullscreen-card.ready-to-close::after {
-  content: '';
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 4px;
-  background: linear-gradient(to right, #ffffff, #1e90ff);
-  animation: readyToClose 1.5s ease-in-out infinite;
+  color: rgba(255, 255, 255, 1);
+  animation: swipeUpReady 1s ease-in-out infinite;
 }
 
-.ready-to-close::before {
-  content: '';
-  position: fixed;
-  top: 4px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 40px;
-  height: 4px;
-  background: #A3A3A3;
-  border-radius: 2px;
+/* Domyn card specific styling for black arrow on light background */
+.card3.fullscreen-card::after {
+  color: rgba(0, 0, 0, 0.7);
+  text-shadow: 0 0 8px rgba(0, 0, 0, 0.3);
+  animation: arrowFadeIn 1.2s ease-out 1s forwards, swipeUpHint 2.5s ease-in-out infinite 2.2s;
+  opacity: 0;
 }
 
-@keyframes readyToClose {
-  0%   { transform: scaleX(0); opacity: 0; }
-  50%  { transform: scaleX(1); opacity: 1; }
-  100% { transform: scaleX(0); opacity: 0; }
+.fullscreen-card.closing::after {
+  animation: arrowFadeOut 0.6s ease-in forwards !important;
 }
+
+.card3.fullscreen-card.closing::after {
+  animation: arrowFadeOut 0.6s ease-in forwards !important;
+}
+
+.card3.fullscreen-card.ready-to-close::after {
+  color: rgba(0, 0, 0, 0.9);
+  animation: swipeUpReady 1s ease-in-out infinite;
+}
+
+@keyframes swipeUpHint {
+  0%, 100% { transform: translateY(-50%); opacity: 0.6; }
+  50% { transform: translateY(-58px); opacity: 1; }
+}
+
+@keyframes swipeUpReady {
+  0%, 100% { transform: translateY(-50%) scale(1); opacity: 0.9; }
+  50% { transform: translateY(-62px) scale(1.1); opacity: 1; }
+}
+
+@keyframes arrowFadeIn {
+  0% { 
+    opacity: 0; 
+    transform: translateY(-58px) scale(0.8); 
+  }
+  100% { 
+    opacity: 0.6; 
+    transform: translateY(-50%) scale(1); 
+  }
+}
+
+@keyframes arrowFadeOut {
+  0% { 
+    opacity: 0.6; 
+    transform: translateY(-50%) scale(1); 
+  }
+  100% { 
+    opacity: 0; 
+    transform: translateY(-58px) scale(0.8); 
+  }
+}
+
 
 /* ======================================
    DETAILED OVERVIEW (NORMAL CARD CONTENT)
@@ -766,14 +1050,15 @@ body.expanded-mode .navbar {
   }
 
   .lower-projects {
-    flex-direction: row;
+    flex-direction: column;
     max-width: 100%;
     gap: 20px;
     padding-bottom: 100px;
+    align-items: center;
   }
 
   .binaryTranslator-card,
-  .proj3-card {
+  .card3 {
     width: 100%;
     max-width: none;
   }
@@ -843,6 +1128,44 @@ body.expanded-mode .navbar {
   
   #bottom-text {
     font-size: clamp(0.3rem, 1.5vw, 0.75em);
+  }
+
+  /* Card3 (Domyn) mobile styling */
+  .card3 {
+    width: 100%;
+    max-width: none;
+  }
+
+  .domyn-background-image {
+    height: 320px;
+  }
+
+  .card3 .domyn-text-overlay {
+    top: auto !important;
+    left: 8px;
+    right: 10px;
+    bottom: 81px !important;
+  }
+
+  .domyn-text-overlay h1 {
+    font-size: clamp(0.7rem, 3vw, 1em);
+  }
+
+  #domyn-top-text {
+    font-size: clamp(0.5rem, 1.8vw, 0.75em);
+  }
+
+  #domyn-bottom-text {
+    font-size: clamp(0.4rem, 1.4vw, 0.65em);
+  }
+
+  .domyn-highlight {
+    font-size: clamp(1rem, 4vw, 1.5rem);
+  }
+
+  #domyn-visit-button {
+    font-size: clamp(0.7rem, 2.5vw, 0.9em);
+    padding: 6px 12px;
   }
 
   .lower-projects {
