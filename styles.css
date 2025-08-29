@@ -644,6 +644,11 @@ body.expanded-mode .navbar {
 }
 
 /* Fullscreen overrides for Card3 (Domyn) */
+.card3.fullscreen-card {
+  max-width: none;
+  background-color: #f9f7f6;
+}
+
 .card3.fullscreen-card .domyn-top {
   position: relative;
   width: 100vw;
