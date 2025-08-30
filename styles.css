@@ -1118,9 +1118,8 @@ body.expanded-mode .navbar {
   }
 
   .text-overlay {
-    position: absolute;
-    top: 90%; 
-    transform: translateY(calc(-1.5vh * 9));
+    opacity: 0;
+    visibility: hidden;
   }
   
   #top-text {
@@ -1146,10 +1145,8 @@ body.expanded-mode .navbar {
   }
 
   .card3 .domyn-text-overlay {
-    top: auto !important;
-    left: 8px;
-    right: 10px;
-    bottom: 81px !important;
+    opacity: 0;
+    visibility: hidden;
   }
 
   .domyn-text-overlay h1 {
