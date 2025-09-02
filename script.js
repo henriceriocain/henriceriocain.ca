@@ -118,6 +118,7 @@ document.addEventListener("DOMContentLoaded", function() {
     cloneCard.classList.add('fullscreen-card');
     const isCard2 = originalCard.classList.contains('card2');
     const isCard3 = originalCard.classList.contains('card3');
+    const isCard4 = originalCard.classList.contains('card4');
     let attemptingClose = false;
     
     // Make it easy to trigger close if user scrolls up from near top
@@ -199,6 +200,8 @@ document.addEventListener("DOMContentLoaded", function() {
       hiddenContent = cloneCard.querySelector('.card2-hiddencontent');
     } else if (isCard3) {
       hiddenContent = cloneCard.querySelector('.card3-hiddencontent');
+    } else if (isCard4) {
+      hiddenContent = cloneCard.querySelector('.card4-hiddencontent');
     } else {
       hiddenContent = cloneCard.querySelector('.card-content');
     }
@@ -241,7 +244,7 @@ document.addEventListener("DOMContentLoaded", function() {
     const headerH2 = cloneCard.querySelector('.card-header h2');
     if (headerH2) cloneHeaderText = headerH2.textContent.trim();
     let originalCard = null;
-    const allCards = document.querySelectorAll('.card, .card2, .card3');
+    const allCards = document.querySelectorAll('.card, .card2, .card3, .card4');
     for (let card of allCards) {
       const cardH2 = card.querySelector('.card-header h2');
       if (cardH2 && cardH2.textContent.trim() === cloneHeaderText) {
@@ -253,6 +256,8 @@ document.addEventListener("DOMContentLoaded", function() {
       // For card3 (Domyn), check if cloneCard is card3
       if (cloneCard.classList.contains('card3')) {
         originalCard = document.querySelector('.card3');
+      } else if (cloneCard.classList.contains('card4')) {
+        originalCard = document.querySelector('.card4');
       } else {
         // Fallback to Henri.AI card if we can't find a matching header
         originalCard = document.querySelector('.card2'); 
@@ -285,7 +290,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
   // CARD CLICK EVENT ATTACHMENT
   function attachCardClickEvents() {
-    const cards = document.querySelectorAll('.card, .card2, .card3');
+    const cards = document.querySelectorAll('.card, .card2, .card3, .card4');
     cards.forEach(card => {
       if (!card.dataset.listenerAttached) {
         card.addEventListener('mousedown', () => {

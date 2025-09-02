@@ -370,7 +370,7 @@ body.expanded-mode .navbar {
   color: #FFFFFF;
 }
 
-.card:hover, .card2:hover, .card3:hover{
+.card:hover, .card2:hover, .card3:hover, .card4:hover{
   transform: translateY(-10px);
   box-shadow: 0 10px 15px rgba(0,0,0,0.2);
 }
@@ -793,6 +793,275 @@ body.expanded-mode .navbar {
 }
 
 /* ======================================
+   DALTUTOR CARD STYLING (CARD4 - MATCHES DOMYN STRUCTURE)
+====================================== */
+.card4 .daltutor-container {
+  opacity: 1;
+  transition: opacity 0.2s ease-in-out;
+}
+
+.hidden-state.card4 .daltutor-container {
+  opacity: 0;
+}
+
+.card4:not(.hidden-state) .daltutor-container {
+  opacity: 1;
+}
+
+.card4 {
+  width: 100%;
+  max-width: 600px;
+  background: #e4e2dd;
+  border-radius: 20px;
+  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+.daltutor-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 600px;
+  margin: 0 auto; 
+  border-radius: 20px;
+  position: relative;
+}
+
+.daltutor-top {
+  position: relative;
+  width: 100%;
+}
+
+.daltutor-background-image {
+  width: 100%;
+  height: 380px;
+  border-radius: 20px;
+  display: block;
+  background-image: url('DalTutor/DalTutorIcon.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-color: #e4e2dd;
+}
+
+.daltutor-glass-text {
+  color: #000000;
+  text-shadow: 0 2px 4px rgba(255, 255, 255, 0.9);
+  letter-spacing: 0.3px;
+  font-weight: 500;
+}
+
+.card4 .daltutor-text-overlay {
+  position: absolute !important;
+  top: auto !important;
+  bottom: 76px !important;
+  left: 12px;
+  right: 20px;
+  z-index: 3;
+}
+
+.daltutor-text-overlay h1 {
+  font-size: 1em;
+  margin: 3px 0;
+  font-weight: 600;
+  line-height: 1.1;
+}
+
+#daltutor-top-text {
+  font-size: 0.75em;
+  opacity: 0.8;
+  margin: 0 0 3px 0;
+  line-height: 1.1;
+}
+
+#daltutor-bottom-text {
+  font-size: 0.65em;
+  opacity: 0.7;
+  margin: 3px 0 0 0;
+  line-height: 1.1;
+}
+
+.daltutor-bottom {
+  background: rgba(0, 0, 0, 0.85);
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.15);
+  backdrop-filter: blur(12.8px);
+  -webkit-backdrop-filter: blur(12.8px);
+  color: white;
+  padding: 15px;
+  border-radius: 0 0 20px 20px;
+  width: 100%;
+  max-width: 600px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+  z-index: 2;
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.daltutor-highlight {
+  font-size: 1.5rem;
+  letter-spacing: -0.02em;
+  display: inline-flex;
+  align-items: center;
+  background: linear-gradient(135deg, #ffffff 0%, #e0e0e0 50%, #c0c0c0 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  font-weight: 700;
+}
+
+#daltutor-visit-button {
+  background-color: rgba(212, 212, 212, 0.5);
+  color: white;
+  font-weight: bold;
+  padding: 6px 13px;
+  margin-right: 20px;
+  border-radius: 35px; 
+  cursor: pointer;
+  text-align: center;
+  transition: background-color 0.3s ease;
+}
+
+#daltutor-visit-button:hover {
+  background-color: rgb(191, 191, 191);
+}
+
+.card4-hiddencontent {
+  max-width: 600px;
+  padding: 40px;
+  background: #e4e2dd;
+  border-radius: 0 0 20px 20px;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  display: none;
+}
+
+.card4-hiddencontent h4 {
+  font-size: 18px;
+  margin-top: 30px;
+  color: #1a365d;
+}
+
+.card4-hiddencontent p {
+  font-size: 16px;
+  margin-bottom: 10px;
+  padding-left: 20px;
+  color: #2d3748;
+  line-height: 2;
+}
+
+.card4-hiddencontent .repo_link {
+  color: rgb(10, 132, 255);
+  text-decoration: none;
+}
+
+.card4.pressed .daltutor-container,
+.card4.pressed .daltutor-bottom,
+.card4.pressed .card4-hiddencontent {
+  opacity: 0;
+  transition: opacity 0.2s ease-in-out;
+}
+
+.card4.fullscreen-card.content-visible .daltutor-container,
+.card4.fullscreen-card.content-visible .daltutor-bottom,
+.card4.fullscreen-card.content-visible .card4-hiddencontent {
+  opacity: 1;
+  transition: opacity 0.3s ease-in-out;
+}
+
+/* Fullscreen overrides for Card4 (DalTutor) */
+.card4.fullscreen-card {
+  max-width: none;
+  background-color: #e4e2dd;
+}
+
+.card4.fullscreen-card .daltutor-top {
+  position: relative;
+  width: 100vw;
+  height: 70vh;
+  border-radius: 20px 20px 0 0;
+  margin-top: -60px;
+  overflow: hidden;
+}
+
+.card4.fullscreen-card .daltutor-background-image {
+  width: 100%;
+  height: 100%;
+  background-size: contain;
+  border-radius: 0;
+  background-position: center;
+}
+
+.card4.fullscreen-card .daltutor-bottom {
+  display: none;
+}
+
+.card4.fullscreen-card .brand-title {
+  padding-left: 20px;
+}
+
+.card4.fullscreen-card #daltutor-visit-button {
+  margin-right: 20px;
+}
+
+.card4.fullscreen-card .card4-hiddencontent {
+  display: block;
+  opacity: 1;
+  transform: translateY(0);
+  margin-top: 20px;
+  padding: 40px 60px;
+  border-radius: 0;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: none;
+  width: 100%;
+}
+
+.card4.fullscreen-card .daltutor-container {
+  width: 100%;
+  max-width: none;
+  margin: 0 auto;
+  position: relative;
+  background: transparent;
+}
+
+.card4.fullscreen-card .daltutor-text-overlay {
+  display: none;
+}
+
+.card4.fullscreen-card .daltutor-text-overlay h1 {
+  font-size: 1.3em;
+}
+
+.card4.fullscreen-card #daltutor-top-text {
+  font-size: 0.9em;
+}
+
+.card4.fullscreen-card #daltutor-bottom-text {
+  font-size: 0.8em;
+}
+
+/* DalTutor card specific styling for dark grey arrow on light background */
+.card4.fullscreen-card::after {
+  color: rgba(0, 0, 0, 0.7);
+  text-shadow: 0 0 8px rgba(0, 0, 0, 0.3);
+  animation: arrowFadeIn 1.2s ease-out 1s forwards, swipeUpHint 2.5s ease-in-out infinite 2.2s;
+  opacity: 0;
+}
+
+.card4.fullscreen-card.closing::after {
+  animation: arrowFadeOut 0.6s ease-in forwards !important;
+}
+
+.card4.fullscreen-card.ready-to-close::after {
+  color: rgba(0, 0, 0, 0.9);
+  animation: swipeUpReady 1s ease-in-out infinite;
+}
+
+/* ======================================
    CARD CONTENT (FOR NORMAL CARD1)
 ====================================== */
 .fullscreen-card .card-content h4 {
@@ -1063,7 +1332,8 @@ body.expanded-mode .navbar {
   }
 
   .binaryTranslator-card,
-  .card3 {
+  .card3,
+  .card4 {
     width: 100%;
     max-width: none;
   }
@@ -1166,6 +1436,42 @@ body.expanded-mode .navbar {
   }
 
   #domyn-visit-button {
+    font-size: clamp(0.7rem, 2.5vw, 0.9em);
+    padding: 6px 12px;
+  }
+
+  /* Card4 (DalTutor) mobile styling */
+  .card4 {
+    width: 100%;
+    max-width: none;
+  }
+
+  .daltutor-background-image {
+    height: 320px;
+  }
+
+  .card4 .daltutor-text-overlay {
+    opacity: 0;
+    visibility: hidden;
+  }
+
+  .daltutor-text-overlay h1 {
+    font-size: clamp(0.7rem, 3vw, 1em);
+  }
+
+  #daltutor-top-text {
+    font-size: clamp(0.5rem, 1.8vw, 0.75em);
+  }
+
+  #daltutor-bottom-text {
+    font-size: clamp(0.4rem, 1.4vw, 0.65em);
+  }
+
+  .daltutor-highlight {
+    font-size: clamp(1rem, 4vw, 1.5rem);
+  }
+
+  #daltutor-visit-button {
     font-size: clamp(0.7rem, 2.5vw, 0.9em);
     padding: 6px 12px;
   }
