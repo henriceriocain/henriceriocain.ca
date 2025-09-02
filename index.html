@@ -48,7 +48,9 @@
         </div>
 
         <div class="projects-cards">
-          <div class="hidden">
+          
+          <!-- TOP ROW - HENRI.AI (FULL WIDTH) -->
+          <div class="projects-top-row hidden">
             <div class="card2">
               <div class="henriAI-container">
                 <div class="henriAI-top">
@@ -110,129 +112,135 @@
             </div>
           </div>
 
-          <!-- DOMYN PROJECT CARD -->
+          <!-- BOTTOM ROW - DOMYN AND DALTUTOR (SIDE BY SIDE) -->
+          <div class="projects-bottom-row hidden">
+            <div class="projects-bottom-left">
+              <div class="card3">
+                <div class="domyn-container">
+                  <div class="domyn-top">
+                    <div class="domyn-background-image"></div>
+                  </div>
+                  
+                  <div class="text-overlay domyn-text-overlay">
+                    <p id="domyn-top-text" class="domyn-glass-text">Software Engineering / Mobile Development</p>
+                    <h1 class="domyn-glass-text">Create Your Routine, Your Way</h1>
+                    <p id="domyn-bottom-text" class="domyn-glass-text">A workout application designed for customizability and user autonomy with elegant UI.</p>
+                  </div>
+                  
+                  <!-- Bottom Label -->
+                  <div class="domyn-bottom">
+                    <div class="brand-title">
+                        <span class="domyn-highlight">Domyn</span>       
+                    </div>
+                    <div id="domyn-visit-button">Coming Soon</div>                 
+                  </div>                
+                </div>
+                
+                <div class="card3-hiddencontent">
+                  <div>
+                    <h4>Why Domyn?</h4>
+                    <p>Throughout my fitness journey, I've tested countless workout applications and found them frustrating to use. Most were overly complicated, forcing me into workouts I didn't want to do. They had intrusive advertisements and poor design that completely ruined the experience. When basic functionality was locked behind paywalls, I ended up just using my notes app to track progress. I built Domyn to solve these problems - giving users complete control over their workouts without the BS.</p>
+                  </div>
+                  <div>
+                    <h4>Overview</h4>
+                    <p>
+                      Domyn is a comprehensive workout application built from the ground up as a solo software engineering project. It empowers users to create fully customized workout routines with complete autonomy over their fitness journey, featuring an elegant and intuitive user interface designed for seamless user experience.
+                    </p>
+                  </div>
+                  <div>
+                    <h4>Technical Highlights</h4>
+                    <p><b>Large-Scale Architecture (73,768+ LOC):</b> Modular codebase with 37+ directories including services/, hooks/, utils/, components/, and types/ with 100% TypeScript implementation.</p>
+                    <p><b>React Native & Expo Stack:</b> Built with React Native 0.79.2, Expo SDK 53, React 19, and Expo Router 5.0 for file-based navigation with typed routes.</p>
+                    <p><b>Firebase Backend Integration:</b> Complex data modeling with 15+ specialized services, real-time synchronization, and reference-based architecture eliminating data duplication.</p>
+                    <p><b>Performance Optimization:</b> Custom hook architecture with 50+ specialized hooks, React.useMemo/useCallback throughout, and O(1) exercise history tracking.</p>
+                    <p><b>Advanced Data Management:</b> Multi-layer caching with EnhancedCacheManager, automatic PR detection across 3 exercise types, and optimistic updates for real-time workout tracking.</p>
+                    <p><b>Production-Ready Features:</b> Comprehensive error handling with ServiceError system, type-safe constants preventing runtime errors, and Jest testing infrastructure.</p>
+                  </div>
+                  <div>
+                    <h4>Features</h4>
+                    <p><b>Complete Customizability:</b> Users have full control over every aspect of their workout routines.</p>
+                    <p><b>Intuitive Design:</b> Clean, modern interface that prioritizes user experience and accessibility.</p>
+                    <p><b>User Autonomy:</b> No restrictions or predefined limitations - build workouts exactly how you want.</p>
+                  </div>
+                  <div>
+                    <h4>Development Journey</h4>
+                    <p>Developed entirely as a solo project, showcasing full-stack mobile development capabilities.</p>
+                    <p>Focus on delivering a premium user experience with powerful customization features.</p>
+                    <p>Demonstrates proficiency in UI/UX design, software architecture, and mobile development.</p>
+                  </div>
+                  <div>
+                    <h4>Repository</h4>
+                    <p>
+                      <a href="#" class="repo_link" target="_blank" rel="noopener noreferrer">Available upon release</a>
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="projects-bottom-right">
+              <div class="card4">
+                <div class="daltutor-container">
+                  <div class="daltutor-top">
+                    <div class="daltutor-background-image"></div>
+                  </div>
+                  
+                  <div class="text-overlay daltutor-text-overlay">
+                    <p id="daltutor-top-text" class="daltutor-glass-text">Mobile Development / Educational Technology</p>
+                    <h1 class="daltutor-glass-text">Connect, Learn, Succeed</h1>
+                    <p id="daltutor-bottom-text" class="daltutor-glass-text">A comprehensive platform connecting Dalhousie University students with qualified tutors.</p>
+                  </div>
+                  
+                  <!-- Bottom Label -->
+                  <div class="daltutor-bottom">
+                    <div class="brand-title">
+                        <span class="daltutor-highlight">DalTutor</span>       
+                    </div>
+                    <a href="https://github.com/henriceriocain/DalTutor" target="_blank" rel="noopener noreferrer" style="text-decoration: none;">
+                      <div id="daltutor-visit-button">View Repo</div>
+                    </a>                 
+                  </div>                
+                </div>
+                
+                <div class="card4-hiddencontent">
+                  <div>
+                    <h4>Why DalTutor?</h4>
+                    <p>University students often struggle to find qualified tutors who understand their specific coursework and learning needs. Existing tutoring platforms lack university-specific features and fail to build trust between students and tutors. We created DalTutor to solve these problems by providing a dedicated platform for Dalhousie University students to connect with verified peer tutors.</p>
+                  </div>
+                  <div>
+                    <h4>Overview</h4>
+                    <p>
+                      DalTutor is a comprehensive mobile application developed for Android that connects Dalhousie University students with qualified tutors. The platform features location-based tutorial discovery, integrated payment processing, and role-specific dashboards designed to create a seamless tutoring experience for both students and tutors.
+                    </p>
+                  </div>
+                  <div>
+                    <h4>Technical Highlights</h4>
+                    <p><b>Android Native Development:</b> Built using Java/Kotlin with Android SDK for optimal mobile performance and platform integration.</p>
+                    <p><b>Location-Based Services:</b> Integrated Google Maps API with automatic location detection and proximity-based tutorial recommendations.</p>
+                    <p><b>Payment Integration:</b> Seamless PayPal/Stripe integration for secure transaction processing and registration confirmations.</p>
+                    <p><b>Real-time Notifications:</b> Push notification system for preference-based tutorial alerts and session updates.</p>
+                  </div>
+                  <div>
+                    <h4>Key Features</h4>
+                    <p><b>Tutorial Discovery:</b> Advanced search and filtering by topic, location, fees, and session duration with Google Maps integration.</p>
+                    <p><b>Role-Based Dashboards:</b> Customized interfaces for tutors (session management) and students (tutorial search and preferences).</p>
+                    <p><b>Rating & Review System:</b> Trust-building mechanism with 5-star ratings and detailed reviews for all users.</p>
+                    <p><b>Smart Recommendations:</b> Tutor-facing recommendations to connect with interested students based on preferences and history.</p>
+                    <p><b>User Preferences:</b> Personalized experience through saved preferences for topics, tutors, and notification settings.</p>
+                  </div>
+                  <div>
+                    <h4>Team Collaboration</h4>
+                    <p>Developed as a collaborative team project showcasing agile development practices and comprehensive feature implementation.</p>
+                    <p>Successfully delivered 10+ major user stories including payment integration, location services, and role-based functionality.</p>
+                    <p>Focused on creating a university-specific solution that addresses real student and tutor needs within the Dalhousie community.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- LOWER PROJECTS (BINARY TRANSLATOR ONLY) -->
           <div class="lower-projects hidden">
-            <div class="card3">
-              <div class="domyn-container">
-                <div class="domyn-top">
-                  <div class="domyn-background-image"></div>
-                </div>
-                
-                <div class="text-overlay domyn-text-overlay">
-                  <p id="domyn-top-text" class="domyn-glass-text">Software Engineering / Mobile Development</p>
-                  <h1 class="domyn-glass-text">Create Your Routine, Your Way</h1>
-                  <p id="domyn-bottom-text" class="domyn-glass-text">A workout application designed for customizability and user autonomy with elegant UI.</p>
-                </div>
-                
-                <!-- Bottom Label -->
-                <div class="domyn-bottom">
-                  <div class="brand-title">
-                      <span class="domyn-highlight">Domyn</span>       
-                  </div>
-                  <div id="domyn-visit-button">Coming Soon</div>                 
-                </div>                
-              </div>
-              
-              <div class="card3-hiddencontent">
-                <div>
-                  <h4>Why Domyn?</h4>
-                  <p>Throughout my fitness journey, I've tested countless workout applications and found them frustrating to use. Most were overly complicated, forcing me into workouts I didn't want to do. They had intrusive advertisements and poor design that completely ruined the experience. When basic functionality was locked behind paywalls, I ended up just using my notes app to track progress. I built Domyn to solve these problems - giving users complete control over their workouts without the BS.</p>
-                </div>
-                <div>
-                  <h4>Overview</h4>
-                  <p>
-                    Domyn is a comprehensive workout application built from the ground up as a solo software engineering project. It empowers users to create fully customized workout routines with complete autonomy over their fitness journey, featuring an elegant and intuitive user interface designed for seamless user experience.
-                  </p>
-                </div>
-                <div>
-                  <h4>Technical Highlights</h4>
-                  <p><b>Large-Scale Architecture (73,768+ LOC):</b> Modular codebase with 37+ directories including services/, hooks/, utils/, components/, and types/ with 100% TypeScript implementation.</p>
-                  <p><b>React Native & Expo Stack:</b> Built with React Native 0.79.2, Expo SDK 53, React 19, and Expo Router 5.0 for file-based navigation with typed routes.</p>
-                  <p><b>Firebase Backend Integration:</b> Complex data modeling with 15+ specialized services, real-time synchronization, and reference-based architecture eliminating data duplication.</p>
-                  <p><b>Performance Optimization:</b> Custom hook architecture with 50+ specialized hooks, React.useMemo/useCallback throughout, and O(1) exercise history tracking.</p>
-                  <p><b>Advanced Data Management:</b> Multi-layer caching with EnhancedCacheManager, automatic PR detection across 3 exercise types, and optimistic updates for real-time workout tracking.</p>
-                  <p><b>Production-Ready Features:</b> Comprehensive error handling with ServiceError system, type-safe constants preventing runtime errors, and Jest testing infrastructure.</p>
-                </div>
-                <div>
-                  <h4>Features</h4>
-                  <p><b>Complete Customizability:</b> Users have full control over every aspect of their workout routines.</p>
-                  <p><b>Intuitive Design:</b> Clean, modern interface that prioritizes user experience and accessibility.</p>
-                  <p><b>User Autonomy:</b> No restrictions or predefined limitations - build workouts exactly how you want.</p>
-                </div>
-                <div>
-                  <h4>Development Journey</h4>
-                  <p>Developed entirely as a solo project, showcasing full-stack mobile development capabilities.</p>
-                  <p>Focus on delivering a premium user experience with powerful customization features.</p>
-                  <p>Demonstrates proficiency in UI/UX design, software architecture, and mobile development.</p>
-                </div>
-                <div>
-                  <h4>Repository</h4>
-                  <p>
-                    <a href="#" class="repo_link" target="_blank" rel="noopener noreferrer">Available upon release</a>
-                  </p>
-                </div>
-              </div>
-            </div>
-
-            <!-- DALTUTOR PROJECT CARD -->
-            <div class="card4">
-              <div class="daltutor-container">
-                <div class="daltutor-top">
-                  <div class="daltutor-background-image"></div>
-                </div>
-                
-                <div class="text-overlay daltutor-text-overlay">
-                  <p id="daltutor-top-text" class="daltutor-glass-text">Educational Technology / Web Development</p>
-                  <h1 class="daltutor-glass-text">Learn Better, Study Smarter</h1>
-                  <p id="daltutor-bottom-text" class="daltutor-glass-text">An AI-powered tutoring platform designed to enhance student learning experiences.</p>
-                </div>
-                
-                <!-- Bottom Label -->
-                <div class="daltutor-bottom">
-                  <div class="brand-title">
-                      <span class="daltutor-highlight">DalTutor</span>       
-                  </div>
-                  <a href="https://github.com/henriceriocain/DalTutor" target="_blank" rel="noopener noreferrer" style="text-decoration: none;">
-                    <div id="daltutor-visit-button">View Repo</div>
-                  </a>                 
-                </div>                
-              </div>
-              
-              <div class="card4-hiddencontent">
-                <div>
-                  <h4>Why DalTutor?</h4>
-                  <p>Traditional studying methods often leave students struggling to find personalized help when they need it most. Many educational platforms are generic, expensive, or difficult to navigate. I created DalTutor to provide intelligent, accessible tutoring that adapts to each student's learning style and pace, making quality education support available to everyone.</p>
-                </div>
-                <div>
-                  <h4>Overview</h4>
-                  <p>
-                    DalTutor is an innovative educational technology platform that leverages artificial intelligence to provide personalized tutoring experiences. Built as a comprehensive web application, it offers intelligent study assistance, adaptive learning pathways, and seamless user interactions designed to enhance academic performance.
-                  </p>
-                </div>
-                <div>
-                  <h4>Technical Highlights</h4>
-                  <p><b>AI-Powered Learning Engine:</b> Custom algorithms that adapt to individual learning patterns and provide personalized content recommendations.</p>
-                  <p><b>Modern Web Architecture:</b> Built with React, Node.js, and MongoDB for scalable, responsive performance across all devices.</p>
-                  <p><b>Intelligent Content Management:</b> Dynamic content delivery system that adjusts difficulty and pacing based on student progress and comprehension.</p>
-                  <p><b>Real-time Analytics:</b> Comprehensive progress tracking with detailed insights into learning patterns and areas for improvement.</p>
-                  <p><b>Interactive Learning Tools:</b> Engaging multimedia content, interactive exercises, and gamified learning experiences.</p>
-                </div>
-                <div>
-                  <h4>Features</h4>
-                  <p><b>Personalized Learning Paths:</b> AI-generated study plans tailored to individual student needs and learning objectives.</p>
-                  <p><b>Smart Question Generation:</b> Dynamic quiz and practice problem creation based on curriculum standards and student performance.</p>
-                  <p><b>Progress Visualization:</b> Intuitive dashboards showing learning progress, strengths, and areas needing attention.</p>
-                  <p><b>Collaborative Learning:</b> Peer-to-peer learning features and study group functionality.</p>
-                </div>
-                <div>
-                  <h4>Development Journey</h4>
-                  <p>Developed with a focus on accessibility and user experience, ensuring the platform serves students of all backgrounds and learning abilities.</p>
-                  <p>Emphasis on data-driven insights to continuously improve learning outcomes and platform effectiveness.</p>
-                  <p>Integration of modern educational pedagogy with cutting-edge technology to create meaningful learning experiences.</p>
-                </div>
-              </div>
-            </div>
-
             <!-- BINARY TRANSLATOR CARD -->
             <div class="card binaryTranslator-card">
               <div class="card-header">
@@ -270,6 +278,7 @@
           </div>
 
         </div>
+      </div>
       </div>
     </section>
 
