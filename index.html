@@ -68,7 +68,7 @@
                 <!-- Bottom Label -->
                 <div class="henriAI-bottom">
                   <div class="brand-title">
-                      Henri.<span class="ai-highlight">AI</span>       
+                      Henri<span class="ai-highlight">AI</span>       
                   </div>
                   <a href="https://henriai.ca" target="_blank" rel="noopener noreferrer" style="text-decoration: none;">
                     <div id="visit-button">Visit</div>
@@ -79,28 +79,40 @@
               
               <div class="card2-hiddencontent">
                 <div>
+                  <h4>Demo</h4>
+                  <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%; background: #000; border-radius: 10px; margin-bottom: 30px;">
+                    <iframe src="https://www.youtube.com/embed/qJVztigMnhM" 
+                            style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0;" 
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                            allowfullscreen>
+                    </iframe>
+                  </div>
+                </div>
+                <div>
                   <h4>Overview</h4>
                   <p>
-                    HenriAI is a custom conversational AI model developed with GPT-Neo. It aims for rich, human-like dialogues, personalized responses, and a natural communication style. The model is fine-tuned and customized to improve conversational fluidity and context retention.
+                    HenriAI is a fine-tuned conversational model built on <b>GPT-J-6B</b> using <b>QLoRA</b> (4-bit NF4, double quantization) with <b>LoRA</b> adapters on attention and MLP modules. Training uses a curated Q&A/instruction dataset tokenized to <b>512</b> tokens, <b>batch size 28</b>, <b>5 epochs</b>, <b>AdamW + cosine decay</b>, gradient accumulation, and gradient checkpointing; adapters are checkpointed each epoch for A/B selection and rollback. Inference loads the 4-bit base plus adapters via <b>PEFT</b> and serves a <b>FastAPI/Uvicorn</b> API with <b>/generate</b>, <b>/auth</b>, and <b>/healthz</b>; generation supports temperature/top-p and returns latency. Security and integration include <b>server-side password</b>, <b>CORS allowlist</b> to production domains, and exposure to the website via a <b>Cloudflare tunnel</b> with a runtime-injected API URL. Stack: PyTorch, Transformers, PEFT, BitsAndBytes, Accelerate, FastAPI, Uvicorn, Cloudflared, Colab A100.
                   </p>
                 </div>
                 <div>
                   <h4>Technical Highlights</h4>
-                  <p><b>Model Base:</b> Built on GPT-Neo 1.3B for coherent responses.</p>
-                  <p><b>Fine-Tuning & Optimization:</b> Utilizes AdamW and mixed precision for efficiency.</p>
-                  <p><b>Custom Training Data:</b> Specialized datasets ensure personality-consistent responses.</p>
+                  <p>• <b>QLoRA</b> fine-tune of <b>GPT-J-6B</b> (4-bit <b>NF4</b> + double quant) with <b>LoRA</b> adapters across attention and MLP layers.</p>
+                  <p>• Standardized <b>Q&A/instruction data pipeline</b> at <b>512-token</b> context for supervised causal training.</p>
+                  <p>• Training regime: <b>AdamW</b> with <b>cosine schedule</b>, <b>gradient checkpointing/accumulation</b> for single-GPU efficiency.</p>
+                  <p>• Versioned <b>LoRA adapter artifacts</b> enabling <b>A/B model selection</b> and rapid rollback.</p>
+                  <p>• Production inference API (<b>FastAPI</b>): <b>/generate</b> with temperature/top-p controls, <b>/healthz</b>; low-latency <b>FP16/AMP</b> decoding.</p>
+                  <p>• Security & integration: <b>server-side auth</b>, strict <b>CORS allowlist</b>, <b>Cloudflare tunnel</b> powering live calls from henriai.ca.</p>
                 </div>
                 <div>
                   <h4>Features</h4>
-                  <p><b>Robust Language Generation:</b> Contextually relevant conversation capabilities.</p>
-                  <p><b>Optimized Performance:</b> Efficiency-focused training pipeline enhances responsiveness.</p>
-                  <p><b>Custom Dataset:</b> Tailored sets for more natural interactions.</p>
-                </div>
-                <div>
-                  <h4>Current Challenges</h4>
-                  <p>Improving persona embodiment and coherence.</p>
-                  <p>Reducing irrelevant responses.</p>
-                  <p>Addressing resource constraints for larger models.</p>
+                  <p>• Fine-tuned <b>GPT-J-6B</b> via <b>QLoRA</b> (4-bit <b>NF4</b>, <b>LoRA</b> on attention + MLP) for conversational Q&A.</p>
+                  <p>• <b>512-token</b> context encoding with standardized <b>Question/Answer</b> prompt template.</p>
+                  <p>• <b>/generate</b> API with <b>max_new_tokens</b>, <b>temperature</b>, and <b>top_p</b> controls; returns response + <b>latency</b>.</p>
+                  <p>• Mixed-precision (<b>FP16/AMP</b>) decoding with <b>caching</b> for low-latency inference.</p>
+                  <p>• Versioned <b>LoRA adapters</b> (per-epoch) for <b>A/B selection</b> and instant rollback.</p>
+                  <p>• Health & auth endpoints: <b>/healthz</b> and <b>/auth</b> (server-side secret).</p>
+                  <p>• Strict <b>CORS allowlist</b> to production domains; no client-side secret exposure.</p>
+                  <p>• Public access via <b>Cloudflare tunnel</b>; runtime API base injected into the frontend (<b>window.COLAB_API_URL</b>).</p>
                 </div>
                 <div>
                   <h4>Repository</h4>
