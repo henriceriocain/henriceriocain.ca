@@ -50,18 +50,39 @@ document.addEventListener("DOMContentLoaded", function() {
   hiddenElements.forEach(el => revealObserver.observe(el));
 
   // ACTIVE NAVBAR LINK
+  // Use a central viewport band so long sections still activate correctly.
   const sections = document.querySelectorAll('section');
   const navLinks = document.querySelectorAll('.navbar a');
-  const sectionObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        navLinks.forEach(link => link.classList.remove('active-link'));
-        const activeLink = document.querySelector(`.navbar a[href="#${entry.target.id}"]`);
-        if (activeLink) activeLink.classList.add('active-link');
+
+  function setActiveLink(id) {
+    navLinks.forEach(link => {
+      const isActive = link.getAttribute('href') === `#${id}`;
+      if (isActive) {
+        link.classList.add('active-link');
+      } else {
+        link.classList.remove('active-link');
       }
     });
-  }, { threshold: 0.6 });
-  sections.forEach(section => sectionObserver.observe(section));
+  }
+
+  // Create an observer that triggers when a section overlaps the middle 10% of the viewport.
+  const sectionObserver = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          setActiveLink(entry.target.id);
+        }
+      });
+    },
+    {
+      root: null,
+      // Shrink the root top/bottom by 45% so the remaining 10% middle band controls activation
+      rootMargin: '-45% 0px -45% 0px',
+      threshold: 0
+    }
+  );
+
+  sections.forEach((section) => sectionObserver.observe(section));
 
   // TYPING ANIMATION
   function createTypingAnimation(element, text, speed, onComplete) {
