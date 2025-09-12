@@ -208,6 +208,17 @@ document.addEventListener("DOMContentLoaded", function() {
     if (hiddenContent) hiddenContent.style.display = 'block';
 
     document.body.appendChild(cloneCard);
+    
+    // Move the card's bottom bar into a fixed footer dock (viewport bottom)
+    const bottomBar = cloneCard.querySelector('.henriAI-bottom, .domyn-bottom, .daltutor-bottom');
+    if (bottomBar) {
+      const dock = document.createElement('div');
+      dock.className = 'fullscreen-footer';
+      dock.appendChild(bottomBar);
+      cloneCard.appendChild(dock);
+      cloneCard.classList.add('has-footer');
+    }
+    
     document.body.classList.add('expanded-mode');
     cloneCard.offsetWidth; // force reflow
     cloneCard.classList.add('fullscreen-card');

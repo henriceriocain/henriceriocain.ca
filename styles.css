@@ -715,9 +715,6 @@ body.expanded-mode .navbar {
   background-position: center;
 }
 
-.card3.fullscreen-card .domyn-bottom {
-  display: none;
-}
 
 .card3.fullscreen-card .brand-title {
   padding-left: 20px;
@@ -785,14 +782,6 @@ body.expanded-mode .navbar {
   object-position: 50% 5%;
 }
 
-.card2.fullscreen-card .henriAI-bottom {
-  position: absolute;
-  bottom: 0;
-  width: 100vw;
-  border-radius: 0;
-  width: 100vw; 
-  max-width: none;
-}
 
 .card2.fullscreen-card .brand-title {
   padding-left: 20px;
@@ -1043,14 +1032,6 @@ body.expanded-mode .navbar {
   background-position: center;
 }
 
-.card4.fullscreen-card .daltutor-bottom {
-  position: absolute;
-  bottom: 0;
-  width: 100vw;
-  border-radius: 0;
-  width: 100vw; 
-  max-width: none;
-}
 
 .card4.fullscreen-card .brand-title {
   padding-left: 20px;
@@ -1601,4 +1582,51 @@ body.expanded-mode .navbar {
   margin-left: auto;
   margin-right: auto;
   /* keep your existing padding; this just ensures it's centered and narrower */
+}
+
+/* --- App-store style fixed footer for expanded cards --- */
+:root { --project-footer-h: 72px; } /* tweak as needed */
+
+/* Larger footer on bigger screens for better aesthetics */
+@media (min-width: 768px) {
+  :root { --project-footer-h: 88px; }
+}
+
+@media (min-width: 1200px) {
+  :root { --project-footer-h: 96px; }
+}
+
+/* Give scrollable content room above the fixed footer */
+.fullscreen-card.has-footer {
+  padding-bottom: calc(var(--project-footer-h) + 24px + env(safe-area-inset-bottom));
+}
+
+/* Viewport-fixed dock that holds each card's bottom bar when expanded */
+.fullscreen-footer {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1001; /* above the clone (1000) */
+  padding: 8px 16px calc(8px + env(safe-area-inset-bottom));
+  /* Apple/OpenAI rounded corner aesthetic */
+  border-radius: 20px 20px 0 0;
+  margin: 0 8px 0 8px; /* slight margin from screen edges */
+  left: 8px;
+  right: 8px;
+}
+
+/* When docked, make the bar edge-to-edge and override old rules */
+.fullscreen-footer .henriAI-bottom,
+.fullscreen-footer .domyn-bottom,
+.fullscreen-footer .daltutor-bottom {
+  width: 100%;
+  max-width: none;
+  margin: 0;
+  border-radius: 16px; /* inner rounded corners */
+  position: static !important;   /* beats previous absolute/sticky */
+  display: flex !important;      /* beats any display:none */
+  min-height: var(--project-footer-h);
+  /* Enhanced padding for bigger screens */
+  padding: 16px 20px;
 }
