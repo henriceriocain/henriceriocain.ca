@@ -824,7 +824,6 @@ body.expanded-mode .navbar {
   margin: 0 auto;
   position: relative;
   background: transparent;
-  max-width: none;
 }
 
 .card2.pressed .henriAI-container,
@@ -1590,4 +1589,16 @@ body.expanded-mode .navbar {
     font-weight: 400;
   }
 
+}
+
+/* --- Standard narrow read width for expanded cards (match HenriAI) --- */
+:root { --expanded-read-width: 1000px; }
+
+.card3.fullscreen-card .card3-hiddencontent,
+.card4.fullscreen-card .card4-hiddencontent {
+  max-width: var(--expanded-read-width);
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  /* keep your existing padding; this just ensures it's centered and narrower */
 }
