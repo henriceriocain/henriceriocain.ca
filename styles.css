@@ -848,7 +848,7 @@ body.expanded-mode .navbar {
 .card4 {
   width: 100%;
   max-width: 600px;
-  background: #e4e2dd;
+  background: #fcfcfb;
   border-radius: 20px;
   transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   box-shadow: 0 4px 6px rgba(0,0,0,0.1);
@@ -878,7 +878,7 @@ body.expanded-mode .navbar {
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
-  background-color: #e4e2dd;
+  background-color: #fcfcfb;
 }
 
 .daltutor-glass-text {
@@ -968,7 +968,7 @@ body.expanded-mode .navbar {
 .card4-hiddencontent {
   max-width: 600px;
   padding: 40px;
-  background: #e4e2dd;
+  background: #fcfcfb;
   border-radius: 0 0 20px 20px;
   opacity: 0;
   transform: translateY(20px);
@@ -1012,7 +1012,7 @@ body.expanded-mode .navbar {
 /* Fullscreen overrides for Card4 (DalTutor) */
 .card4.fullscreen-card {
   max-width: none;
-  background-color: #e4e2dd;
+  background-color: #fcfcfb;
 }
 
 .card4.fullscreen-card .daltutor-top {
@@ -1022,6 +1022,7 @@ body.expanded-mode .navbar {
   border-radius: 20px 20px 0 0;
   margin-top: -60px;
   overflow: hidden;
+  background-color: #fcfcfb; /* ensure header area matches expanded bg */
 }
 
 .card4.fullscreen-card .daltutor-background-image {
@@ -1030,6 +1031,7 @@ body.expanded-mode .navbar {
   background-size: contain;
   border-radius: 0;
   background-position: center;
+  background-color: #fcfcfb; /* override default to match expanded bg */
 }
 
 
@@ -1052,6 +1054,35 @@ body.expanded-mode .navbar {
   margin-right: auto;
   max-width: none;
   width: 100%;
+  background: #fcfcfb; /* match expanded card background */
+}
+
+/* DalTutor key features list styling (expanded content) */
+.card4-hiddencontent ul.feature-list {
+  list-style: none; /* remove bullets */
+  padding-left: 20px; /* match paragraph indent */
+  margin: 8px 0 0 0;
+}
+.card4-hiddencontent ul.feature-list li {
+  margin: 8px 0;
+  color: #2d3748;
+  line-height: 1.8;
+  padding-left: 20px; /* hanging indent space */
+  text-indent: -20px; /* first line outdented, wraps align */
+}
+
+/* DalTutor technical highlights list styling (expanded content) */
+.card4-hiddencontent ul.tech-list {
+  list-style: none; /* remove bullets */
+  padding-left: 20px; /* align with paragraphs */
+  margin: 8px 0 0 0;
+}
+.card4-hiddencontent ul.tech-list li {
+  margin: 8px 0;
+  color: #2d3748;
+  line-height: 1.75;
+  padding-left: 20px; /* hanging indent */
+  text-indent: -20px; /* first line outdented */
 }
 
 .card4.fullscreen-card .daltutor-container {
@@ -1060,6 +1091,36 @@ body.expanded-mode .navbar {
   margin: 0 auto;
   position: relative;
   background: transparent;
+}
+
+/* --- DalTutor app preview scroller (expanded view) --- */
+.card4.fullscreen-card .daltutor-previews {
+  display: flex;
+  gap: 16px;
+  overflow-x: auto;
+  overflow-y: hidden;
+  -webkit-overflow-scrolling: touch;
+  scroll-snap-type: x proximity;
+  padding: 8px 2px 12px;
+  margin: 0 auto 20px auto;
+  max-width: var(--expanded-read-width);
+}
+
+.card4.fullscreen-card .daltutor-previews img {
+  flex: 0 0 auto;
+  height: clamp(260px, 46vh, 560px);
+  width: auto;
+  border-radius: 18px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+  background: #ffffff;
+  scroll-snap-align: start;
+}
+
+/* Optional: subtle scrollbar styling */
+.card4.fullscreen-card .daltutor-previews::-webkit-scrollbar { height: 8px; }
+.card4.fullscreen-card .daltutor-previews::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 4px;
 }
 
 .card4.fullscreen-card .daltutor-text-overlay {
@@ -1585,15 +1646,15 @@ body.expanded-mode .navbar {
 }
 
 /* --- App-store style fixed footer for expanded cards --- */
-:root { --project-footer-h: 72px; } /* tweak as needed */
+:root { --project-footer-h: 64px; } /* reduced default height */
 
 /* Larger footer on bigger screens for better aesthetics */
 @media (min-width: 768px) {
-  :root { --project-footer-h: 88px; }
+  :root { --project-footer-h: 76px; }
 }
 
 @media (min-width: 1200px) {
-  :root { --project-footer-h: 96px; }
+  :root { --project-footer-h: 68px; }
 }
 
 /* Give scrollable content room above the fixed footer */
@@ -1608,7 +1669,7 @@ body.expanded-mode .navbar {
   right: 0;
   bottom: 0;
   z-index: 1001; /* above the clone (1000) */
-  padding: 8px 16px calc(8px + env(safe-area-inset-bottom));
+  padding: 6px 12px calc(6px + env(safe-area-inset-bottom));
   /* Apple/OpenAI rounded corner aesthetic */
   border-radius: 20px 20px 0 0;
   margin: 0 8px 0 8px; /* slight margin from screen edges */
@@ -1628,5 +1689,17 @@ body.expanded-mode .navbar {
   display: flex !important;      /* beats any display:none */
   min-height: var(--project-footer-h);
   /* Enhanced padding for bigger screens */
-  padding: 16px 20px;
+  padding: 10px 16px;
+}
+
+/* Tighter footer on very large screens */
+@media (min-width: 1200px) {
+  .fullscreen-footer {
+    padding: 6px 12px calc(6px + env(safe-area-inset-bottom));
+  }
+  .fullscreen-footer .henriAI-bottom,
+  .fullscreen-footer .domyn-bottom,
+  .fullscreen-footer .daltutor-bottom {
+    padding: 8px 16px;
+  }
 }

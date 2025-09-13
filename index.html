@@ -225,6 +225,12 @@
                 </div>
                 
                 <div class="card4-hiddencontent">
+                  <!-- App Store-style preview carousel -->
+                  <div class="daltutor-previews" role="region" aria-label="DalTutor app previews">
+                    <img src="DalTutor/Preview1.png" alt="DalTutor app preview 1" loading="lazy" />
+                    <img src="DalTutor/Preview2.png" alt="DalTutor app preview 2" loading="lazy" />
+                    <img src="DalTutor/Preview3.png" alt="DalTutor app preview 3" loading="lazy" />
+                  </div>
                   <div>
                     <h4>Why DalTutor?</h4>
                     <p>University students often struggle to find qualified tutors who understand their specific coursework and learning needs. Existing tutoring platforms lack university-specific features and fail to build trust between students and tutors. We created DalTutor to solve these problems by providing a dedicated platform for Dalhousie University students to connect with verified peer tutors.</p>
@@ -232,29 +238,37 @@
                   <div>
                     <h4>Overview</h4>
                     <p>
-                      DalTutor is a comprehensive mobile application developed for Android that connects Dalhousie University students with qualified tutors. The platform features location-based tutorial discovery, integrated payment processing, and role-specific dashboards designed to create a seamless tutoring experience for both students and tutors.
+                      This app is a simple hub that connects students and tutors for on‑campus learning. Students can find the right help by searching for tutorials or tutors by topic, location, fee, degree, or rating, or by browsing a Google Maps view of campus buildings to see what’s happening nearby. Tapping a result opens clear details—time, place, description, capacity, and tutor info—so students can register quickly for free or paid sessions, with integrated payment processing for paid bookings. Tutors can turn on “Tutor Tools” in their profile to post and manage their own tutorials, set the schedule, location and capacity, and see who’s registered. A Community tab lets everyone start threads, reply, and star useful posts, making it easy to share tips and ask questions. Profiles and reviews help students choose confidently, while notifications keep users up to date on registrations and community activity.
                     </p>
                   </div>
                   <div>
-                    <h4>Technical Highlights</h4>
-                    <p><b>Android Native Development:</b> Built using Java/Kotlin with Android SDK for optimal mobile performance and platform integration.</p>
-                    <p><b>Location-Based Services:</b> Integrated Google Maps API with automatic location detection and proximity-based tutorial recommendations.</p>
-                    <p><b>Payment Integration:</b> Seamless PayPal/Stripe integration for secure transaction processing and registration confirmations.</p>
-                    <p><b>Real-time Notifications:</b> Push notification system for preference-based tutorial alerts and session updates.</p>
-                  </div>
-                  <div>
                     <h4>Key Features</h4>
-                    <p><b>Tutorial Discovery:</b> Advanced search and filtering by topic, location, fees, and session duration with Google Maps integration.</p>
-                    <p><b>Role-Based Dashboards:</b> Customized interfaces for tutors (session management) and students (tutorial search and preferences).</p>
-                    <p><b>Rating & Review System:</b> Trust-building mechanism with 5-star ratings and detailed reviews for all users.</p>
-                    <p><b>Smart Recommendations:</b> Tutor-facing recommendations to connect with interested students based on preferences and history.</p>
-                    <p><b>User Preferences:</b> Personalized experience through saved preferences for topics, tutors, and notification settings.</p>
+                    <ul class="feature-list">
+                      <li><b>Find Tutorials Fast:</b> Search by topic, fee, location, degree, or rating—or browse the campus map.</li>
+                      <li><b>One‑Tap Registration:</b> Sign up in seconds; integrated PayPal handles paid sessions smoothly.</li>
+                      <li><b>Tutor Tools:</b> Post tutorials with schedule, capacity, fee, and on‑campus location selection.</li>
+                      <li><b>Live Availability:</b> See spots left and get real‑time updates as sessions fill.</li>
+                      <li><b>Community Threads:</b> Ask questions, share tips, reply, and star helpful posts.</li>
+                      <li><b>Profiles & Reviews:</b> View tutor bios, ratings, and recent reviews to choose confidently.</li>
+                      <li><b>Smart Notifications:</b> Stay on top of registrations, updates, and community activity.</li>
+                      <li><b>Campus Map View:</b> Pins highlight buildings with upcoming sessions; jump straight to location lists.</li>
+                    </ul>
                   </div>
                   <div>
-                    <h4>Team Collaboration</h4>
-                    <p>Developed as a collaborative team project showcasing agile development practices and comprehensive feature implementation.</p>
-                    <p>Successfully delivered 10+ major user stories including payment integration, location services, and role-based functionality.</p>
-                    <p>Focused on creating a university-specific solution that addresses real student and tutor needs within the Dalhousie community.</p>
+                    <h4>Technical Highlights</h4>
+                    <ul class="tech-list">
+                      <li><b>Location‑Based Discovery (Google Maps SDK):</b> 19 curated DAL buildings, placeId‑based marker grouping, and deep links to location‑specific sessions.</li>
+                      <li><b>Faceted Search (MVVM, 6 ViewModels):</b> Topic/location/fee/degree/rating filters with RecyclerView adapter swap for Tutors vs Tutorials and client‑side filtering over cached RTDB snapshots.</li>
+                      <li><b>In‑App Payments (PayPal SDK, sandbox):</b> Seamless free/paid registration flow with robust UI state and error handling.</li>
+                      <li><b>Realtime UX (Firebase + FCM):</b> ValueEventListener‑driven capacity/listing updates, unified notifications across 2 RTDB nodes with a 99+ unread badge, plus FCM push (NotificationChannel, deep links).</li>
+                      <li><b>Data Consistency & Access Control:</b> Atomic multi‑path writes for replies/stars (O(1) write batch), author‑only edits, timestamp‑indexed reads, and guardrails for Tutor Tools (can’t disable with upcoming sessions).</li>
+                    </ul>
+                  </div>
+                  <div>
+                    <h4>Background</h4>
+                    <p>
+                      Developed as a collaborative team project showcasing agile development practices and comprehensive feature implementation. Successfully delivered 10+ major user stories including payment integration, location services, and role-based functionality. It began as a group project for my CSCI 3130 Software Engineering course; however, due to technical debt, it was incomplete. I then took initiative to deliver a complete overhaul of the application—end‑to‑end—refactoring the architecture and data model, rebuilding core user flows, paying down technical debt, and adding extensive features, performance improvements, and production‑ready polish.
+                    </p>
                   </div>
                 </div>
               </div>
