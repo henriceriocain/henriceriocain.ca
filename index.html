@@ -285,7 +285,7 @@
             </div>
           </div>
 
-          <!-- LOWER PROJECTS (BINARY TRANSLATOR ONLY) -->
+          <!-- LOWER PROJECTS (BINARY TRANSLATOR & DOCUMENT ROUTING) -->
           <div class="lower-projects hidden">
             <!-- BINARY TRANSLATOR CARD -->
             <div class="card binaryTranslator-card">
@@ -311,9 +311,61 @@
                 <div>
                   <h4>Repository</h4>
                   <p>
-                    <a href="https://github.com/henriceriocain/Binary_Translator" 
-                       class="repo_link" 
-                       target="_blank" 
+                    <a href="https://github.com/henriceriocain/Binary_Translator"
+                       class="repo_link"
+                       target="_blank"
+                       rel="noopener noreferrer">
+                      Press on me!
+                    </a>
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <!-- DOCUMENT ROUTING RNN CARD -->
+            <div class="card documentRouting-card">
+              <div class="card-header">
+                <h2>Document Routing with an RNN</h2>
+                <p class="brief-description">
+                  Auto-classifies scanned documents into 4 types (letter, form, email, invoice) using OCR and BiLSTM neural networks for intelligent document routing.
+                </p>
+              </div>
+              <div class="card-content hidden-content">
+                <div class="detailed-overview">
+                  <h4>Overview</h4>
+                  <p>
+                    A document classification system that mirrors real-world document routing workflows used in title and escrow processing. The system leverages OCR to extract text from scanned images, then employs a Bidirectional LSTM (BiLSTM) recurrent neural network to analyze word sequences and classify documents into four categories: letters, forms, emails, and invoices. Built on the RVL-CDIP dataset, this text-only approach demonstrates how sequential models can understand document structure through natural language patterns.
+                  </p>
+                </div>
+                <div>
+                  <h4>Technical Highlights</h4>
+                  <p><b>OCR Pipeline:</b> Pytesseract (Tesseract wrapper) integration converts scanned images to text, preserving document structure through sequential word order.</p>
+                  <p><b>BiLSTM Architecture:</b> Bidirectional LSTM (128 hidden units) reads text both forward and backward to capture contextual relationships in document headers, lines, and signatures.</p>
+                  <p><b>Text Processing Pipeline:</b> Keras TextVectorization layer with 20K vocabulary, 300-token sequences, and padding/truncation for consistent input dimensions across all documents.</p>
+                  <p><b>Training Pipeline:</b> 4000 training samples across 4 balanced classes, 3 epochs with AdamW optimizer, achieving ~83% test accuracy on 476 validation samples.</p>
+                  <p><b>Real-Time Prediction:</b> predict_image() function accepts unseen scanned pages, performs OCR + tokenization, and returns class + confidence scores for production deployment.</p>
+                  <p><b>Production-Ready Dataset:</b> RVL-CDIP streaming from Hugging Face with per-class sampling (1000 train, 120 test per category) for balanced model performance.</p>
+                </div>
+                <div>
+                  <h4>Features</h4>
+                  <p><b>Multi-Class Classification:</b> Accurately distinguishes between 4 document types with softmax activation for probabilistic predictions.</p>
+                  <p><b>RNN-Based Understanding:</b> BiLSTM captures sequential patterns in document text, understanding context that simple bag-of-words models miss.</p>
+                  <p><b>Real-World Dataset:</b> Trained on RVL-CDIP, a public dataset of real scanned documents, ensuring practical applicability.</p>
+                  <p><b>Inference API:</b> predict_image() function accepts PIL images, performs OCR, tokenization, and returns class prediction with confidence scores.</p>
+                  <p><b>Validation Metrics:</b> Comprehensive evaluation with accuracy tracking, confusion matrix support for error analysis.</p>
+                </div>
+                <div>
+                  <h4>Why RNN/Text-Only?</h4>
+                  <p>
+                    OCR extracts structured text that LSTMs can process sequentially, capturing document flow (headers → body → signatures). This text-only approach keeps the model simple and interpretable without requiring complex computer vision transformers, while still achieving strong classification performance by leveraging the inherent sequential nature of document content.
+                  </p>
+                </div>
+                <div>
+                  <h4>Repository</h4>
+                  <p>
+                    <a href="https://github.com/henriceriocain/Document_Classifier_RNN"
+                       class="repo_link"
+                       target="_blank"
                        rel="noopener noreferrer">
                       Press on me!
                     </a>
@@ -340,52 +392,54 @@
 
         <div class="skills-content">
           <div class="skill-section hidden">
-            <h2>Programming Languages:</h2>
+            <h2>Languages & Frameworks:</h2>
             <div class="skillsContainer">
-              <div><h3>JavaScript</h3></div>
               <div><h3>TypeScript</h3></div>
-              <div><h3>HTML</h3></div>
-              <div><h3>CSS</h3></div>
+              <div><h3>JavaScript</h3></div>
+              <div><h3>React</h3></div>
+              <div><h3>React Native</h3></div>
+              <div><h3>Python</h3></div>
               <div><h3>Java</h3></div>
               <div><h3>C</h3></div>
-              <div><h3>Python</h3></div>
+              <div><h3>SQL</h3></div>
+              <div><h3>HTML/CSS</h3></div>
+              <div><h3>FastAPI</h3></div>
+              <div><h3>Android (Java)</h3></div>
+              <div><h3>Kotlin</h3></div>
+              <div><h3>XML</h3></div>
+              <div><h3>MVVM</h3></div>
             </div>
           </div>
           <div class="skill-section hidden">
-            <h2>Mobile Development:</h2>
+            <h2>Machine Learning & Data:</h2>
             <div class="skillsContainer">
-              <div><h3>React Native</h3></div>
-              <div><h3>Expo</h3></div>
-              <div><h3>iOS Development</h3></div>
-              <div><h3>Android Development</h3></div>
+              <div><h3>PyTorch</h3></div>
+              <div><h3>TensorFlow/Keras</h3></div>
+              <div><h3>Hugging Face Transformers</h3></div>
+              <div><h3>OCR (Tesseract)</h3></div>
+              <div><h3>Model Fine-Tuning (LoRA/QLoRA)</h3></div>
+              <div><h3>GPU Optimization (FP16/TF32)</h3></div>
+              <div><h3>Mixed Precision</h3></div>
             </div>
           </div>
           <div class="skill-section hidden">
-            <h2>Frontend Frameworks:</h2>
+            <h2>Tools & Platforms:</h2>
             <div class="skillsContainer">
-              <div><h3>React</h3></div>
-              <div><h3>React Hooks</h3></div>
-            </div>
-          </div>
-          <div class="skill-section hidden">
-            <h2>Database Management:</h2>
-            <div class="skillsContainer">
-              <div><h3>MySQL</h3></div>
               <div><h3>Firebase</h3></div>
-              <div><h3>Firestore</h3></div>
-            </div>
-          </div>
-          <div class="skill-section hidden">
-            <h2>Backend & Cloud:</h2>
-            <div class="skillsContainer">
-              <div><h3>Firebase Auth</h3></div>
-              <div><h3>Real-time APIs</h3></div>
-            </div>
-          </div>
-          <div class="skill-section hidden">
-            <h2>Version Control:</h2>
-            <div class="skillsContainer">
               <div><h3>Git</h3></div>
+              <div><h3>GitLab CI/CD</h3></div>
+              <div><h3>Android Studio</h3></div>
+              <div><h3>Google Colab</h3></div>
+              <div><h3>Cloudflare</h3></div>
+              <div><h3>Uvicorn</h3></div>
+            </div>
+          </div>
+          <div class="skill-section hidden">
+            <h2>Practices:</h2>
+            <div class="skillsContainer">
+              <div><h3>Test-Driven Development (TDD)</h3></div>
+              <div><h3>Domain-Driven Design (DDD)</h3></div>
+              <div><h3>Clean Architecture</h3></div>
             </div>
           </div>
         </div>
@@ -404,7 +458,7 @@
         <p><b>email:</b> <span id="contactEmail">henriceriocain@dal.ca</span></p>
         <p><b>linkedin:</b> <a href="https://www.linkedin.com/in/henriceriocain/" target="_blank" rel="noopener noreferrer">henriceriocain</a></p>
         <p><b>github:</b> <a href="https://github.com/henriceriocain" target="_blank" rel="noopener noreferrer">henriceriocain</a></p>
-        <p><b>resume:</b> <a href="ResumeHCC.pdf" target="_blank" rel="noopener noreferrer">click here!</a></p>
+        <p><b>resume:</b> <a href="ResumeHenriCerioCain.pdf" target="_blank" rel="noopener noreferrer">click here!</a></p>
       </div>
     </section>
 
