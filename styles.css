@@ -152,17 +152,19 @@ body.expanded-mode .navbar {
 
 .projects-container {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   width: 100%;
   max-width: 1200px;
-  gap: 50px;
+  gap: 30px;
+  align-items: center;
 }
 
 .projects-title {
-  flex: 0 0 30%;
   display: flex;
   align-items: center;
   justify-content: center;
+  width: 100%;
+  text-align: center;
 }
 
 .projects-title h2 {
@@ -172,7 +174,25 @@ body.expanded-mode .navbar {
 }
 
 .projects-cards {
-  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 30px;
+  width: 100%;
+}
+
+.projects-top-row,
+.projects-middle-row,
+.projects-bottom-row {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 30px;
+}
+
+.projects-middle-cards {
+  width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -180,23 +200,34 @@ body.expanded-mode .navbar {
 }
 
 /* ======================================
-   NEW DESKTOP/TABLET LAYOUT (ABOVE 700PX)
+   MAX VIEW WIDTH LAYOUT (ABOVE 1100PX)
 ====================================== */
-@media (min-width: 701px) {
-  .lower-projects {
-    display: none;
+@media (min-width: 1101px) {
+  .projects-container {
+    max-width: 1280px;
+    --project-scale: 0.9;
+    --project-card-width: calc(600px * var(--project-scale));
+    --project-hero-height: calc(380px * var(--project-scale));
+    --project-hero-offset: calc(-60px * var(--project-scale));
   }
 
-  .projects-top-row {
-    width: 100%;
-    display: flex;
+  .projects-top-row,
+  .projects-middle-row,
+  .projects-bottom-row {
+    flex-direction: row;
+    align-items: stretch;
     justify-content: center;
-    margin-bottom: 30px;
+    gap: 20px;
   }
 
-  .projects-top-row .card2 {
-    width: 100%;
-    max-width: 600px;
+  .projects-top-row .card2,
+  .projects-top-row .card3,
+  .projects-bottom-row .card4,
+  .projects-bottom-row .card5 {
+    flex: 0 0 var(--project-card-width);
+    width: var(--project-card-width);
+    max-width: var(--project-card-width);
+    font-size: calc(1rem * var(--project-scale));
   }
 
   .projects-top-row .henriAI-container,
@@ -205,59 +236,67 @@ body.expanded-mode .navbar {
     width: 100%;
   }
 
-  .projects-bottom-row {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    gap: 30px;
-    margin-bottom: 30px;
+  .projects-top-row .henriAI-container,
+  .projects-top-row .henriAI-bottom,
+  .projects-top-row .domyn-container,
+  .projects-bottom-row .daltutor-container,
+  .projects-bottom-row .docai-container {
+    max-width: var(--project-card-width);
   }
 
-  .projects-bottom-left,
-  .projects-bottom-right {
+  .projects-top-row .henriAI-top {
+    margin-bottom: var(--project-hero-offset);
+  }
+
+  .projects-top-row .domyn-background-image,
+  .projects-bottom-row .daltutor-background-image,
+  .projects-bottom-row .docai-background-image {
+    height: var(--project-hero-height);
+  }
+
+  .projects-bottom-row .docai-container,
+  .projects-bottom-row .docai-top {
+    width: 100%;
+  }
+
+  .projects-middle-row {
+    align-items: center;
+  }
+
+  .projects-middle-row .projects-title {
+    flex: 0 0 320px;
+    width: 320px;
+  }
+
+  .projects-middle-cards {
+    flex-direction: row;
+    justify-content: center;
+    align-items: stretch;
+    gap: 20px;
     flex: 1;
+  }
+
+  .projects-middle-cards .card {
+    flex: 0 0 260px;
+    width: 260px;
+    max-width: 260px;
+    height: 160px;
     display: flex;
-    justify-content: center;
-    max-width: 50%;
+    flex-direction: column;
+    overflow: hidden;
   }
 
-  .projects-bottom-left .card3,
-  .projects-bottom-right .card4 {
-    width: 100%;
-    max-width: 600px;
+  .projects-middle-cards .card-header h2 {
+    font-size: 20px;
+    line-height: 1.2;
   }
 
-  .projects-docai-row {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    margin-bottom: 30px;
+  .projects-middle-cards .brief-description {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
   }
-
-  .projects-docai-row .card5 {
-    width: 100%;
-    max-width: 600px;
-  }
-
-  .projects-docai-row .docai-container,
-  .projects-docai-row .docai-top {
-    width: 100%;
-  }
-}
-
-.lower-projects {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  gap: 30px;
-  width: 100%;
-  max-width: 600px;
-}
-
-.lower-projects .card {
-  width: 100%;
-  max-width: 600px;
 }
 
 /* ======================================
@@ -1757,19 +1796,21 @@ body.expanded-mode .navbar {
     font-size: 60px;
   }
 
-  .lower-projects {
+  .projects-middle-cards {
     flex-direction: column;
     max-width: 100%;
     gap: 20px;
-    padding-bottom: 100px;
     align-items: center;
   }
 
   .binaryTranslator-card,
+  .documentRouting-card,
+  .card2,
   .card3,
-  .card4 {
+  .card4,
+  .card5 {
     width: 100%;
-    max-width: none;
+    max-width: 600px;
   }
 
   #contact p {
@@ -1798,6 +1839,7 @@ body.expanded-mode .navbar {
 
 @media only screen and (max-width: 700px) {
   .projects-top-row,
+  .projects-middle-row,
   .projects-bottom-row {
     display: flex;
     flex-direction: column;
@@ -1807,19 +1849,11 @@ body.expanded-mode .navbar {
   }
 
   .projects-top-row .card2,
-  .projects-bottom-left .card3,
-  .projects-bottom-right .card4 {
+  .projects-top-row .card3,
+  .projects-bottom-row .card4,
+  .projects-bottom-row .card5,
+  .projects-middle-cards .card {
     width: 97.5%;
-    max-width: none;
-  }
-
-  .projects-bottom-row {
-    flex-direction: column;
-  }
-
-  .projects-bottom-left,
-  .projects-bottom-right {
-    width: 100%;
     max-width: none;
   }
 
@@ -1935,13 +1969,13 @@ body.expanded-mode .navbar {
     padding: 6px 12px;
   }
 
-  .lower-projects {
+  .projects-middle-cards {
     flex-direction: column;
     align-items: center;
     justify-content: center;
   }
 
-  .lower-projects .card {
+  .projects-middle-cards .card {
     width: 97.5%;      
     max-width: none;
     align-items: center;
