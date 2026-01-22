@@ -285,6 +285,81 @@
             </div>
           </div>
 
+          <!-- DOCAI ORGANIZER ROW (FULL WIDTH) -->
+          <div class="projects-docai-row hidden">
+            <div class="card5">
+              <div class="docai-container">
+                <div class="docai-top">
+                  <div class="docai-background-image"></div>
+                </div>
+
+                <div class="text-overlay docai-text-overlay">
+                  <p id="docai-top-text" class="docai-glass-text">AWS Cloud Computing / Artificial Intelligence</p>
+                  <h1 class="docai-glass-text">Organize Documents in Seconds, Not Hours</h1>
+                  <p id="docai-bottom-text" class="docai-glass-text">A serverless cloud application that uses AI to automatically classify and organize your documents.</p>
+                </div>
+
+                <!-- Bottom Label -->
+                <div class="docai-bottom">
+                  <div class="brand-title">
+                      DocAI Organizer
+                  </div>
+                  <a href="https://github.com/henriceriocain/DocAIOrganizer" target="_blank" rel="noopener noreferrer" style="text-decoration: none;">
+                    <div id="docai-visit-button">View Repo</div>
+                  </a>
+                </div>
+              </div>
+
+              <div class="card5-hiddencontent">
+                <div>
+                  <h4>Demo</h4>
+                  <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%; background: #000; border-radius: 10px; margin-bottom: 30px;">
+                    <iframe src="https://www.youtube.com/embed/kNxrE4lrvOw"
+                            style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0;"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                            allowfullscreen>
+                    </iframe>
+                  </div>
+                </div>
+                <div class="docai-report-section">
+                  <h4>📄 Full Project Report</h4>
+                  <div class="report-card">
+                    <div class="report-icon">📋</div>
+                    <div class="report-content">
+                      <a href="DocAI/DocAIOrganizerReport.pdf" class="repo_link report-title" target="_blank" rel="noopener noreferrer">
+                        AWS Cloud Computing Project Report
+                      </a>
+                      <p class="report-description">
+                        Comprehensive 15-page technical report covering serverless architecture design, security implementation (bcrypt, JWT, pre-signed URLs), detailed cost analysis ($1.27/month for 1000 users), deployment strategies, and future evolution roadmap.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                <div>
+                  <h4>Overview</h4>
+                  <p>
+                    DocAI Organizer is a serverless cloud application that automates document organization using AI. Built on <b>AWS Lambda, S3, DynamoDB, and API Gateway</b>, it leverages <b>Google Gemini 2.5 Flash</b> to analyze document content and automatically organize files into custom folder structures in <b>under 30 seconds</b>. Users create "conversations" (isolated workspaces) with custom folder trees, upload documents, and let AI handle classification. The system supports in-browser file preview, manual adjustments, and ZIP export with preserved folder hierarchy.
+                  </p>
+                </div>
+                <div>
+                  <h4>Technical Highlights</h4>
+                  <p>• <b>Serverless Architecture:</b> AWS Lambda (Node.js, 512MB, 30s timeout), API Gateway routing, DynamoDB auto-scaling, S3 with pre-signed URLs.</p>
+                  <p>• <b>AI Organization Pipeline:</b> Gemini 2.5 Flash content analysis, JSON response parsing, hallucination validation against folder structure arrays, atomic S3 CopyObject/DeleteObject operations.</p>
+                  <p>• <b>Security Implementation:</b> bcrypt password hashing (12 salt rounds), JWT authentication with 7-day expiration, server-side secret validation, private S3 buckets with 5-minute pre-signed URLs.</p>
+                  <p>• <b>Export System:</b> Client-side ZIP generation using JSZip, FetchAPI parallel downloads, folder structure preservation from S3 key paths.</p>
+                  <p>• <b>Cost Optimization:</b> $0 upfront cost, ~$1.27/month for 1000 users through on-demand pricing, auto-scaling DynamoDB, Lambda cold start handling.</p>
+                </div>
+                <div>
+                  <h4>Key Features</h4>
+                  <p>• <b>Custom Folder Structures:</b> Unlimited conversation-based workspaces with independent folder trees and persistent cloud storage.</p>
+                  <p>• <b>AI-Powered Classification:</b> Semantic document analysis assigns files to appropriate folders based on content understanding.</p>
+                  <p>• <b>Real-Time Organization:</b> Sub-30 second processing with progress updates and responsive UI during AI operations.</p>
+                  <p>• <b>Secure Authentication:</b> JWT-based sessions, bcrypt hashing, per-user S3 folder isolation, no credential exposure.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
           <!-- LOWER PROJECTS (BINARY TRANSLATOR & DOCUMENT ROUTING) -->
           <div class="lower-projects hidden">
             <!-- BINARY TRANSLATOR CARD -->
@@ -392,39 +467,32 @@
 
         <div class="skills-content">
           <div class="skill-section hidden">
-            <h2>Languages & Frameworks:</h2>
+            <h2>Languages:</h2>
             <div class="skillsContainer">
-              <div><h3>TypeScript</h3></div>
               <div><h3>JavaScript</h3></div>
-              <div><h3>React</h3></div>
-              <div><h3>React Native</h3></div>
               <div><h3>Python</h3></div>
               <div><h3>Java</h3></div>
               <div><h3>C</h3></div>
               <div><h3>SQL</h3></div>
               <div><h3>HTML/CSS</h3></div>
-              <div><h3>FastAPI</h3></div>
-              <div><h3>Android (Java)</h3></div>
-              <div><h3>Kotlin</h3></div>
-              <div><h3>XML</h3></div>
-              <div><h3>MVVM</h3></div>
+              <div><h3>Android (Java, Kotlin, XML, MVVM)</h3></div>
             </div>
           </div>
           <div class="skill-section hidden">
             <h2>Machine Learning & Data:</h2>
             <div class="skillsContainer">
               <div><h3>PyTorch</h3></div>
-              <div><h3>TensorFlow/Keras</h3></div>
+              <div><h3>TensorFlow</h3></div>
               <div><h3>Hugging Face Transformers</h3></div>
-              <div><h3>OCR (Tesseract)</h3></div>
-              <div><h3>Model Fine-Tuning (LoRA/QLoRA)</h3></div>
-              <div><h3>GPU Optimization (FP16/TF32)</h3></div>
-              <div><h3>Mixed Precision</h3></div>
+              <div><h3>OCR</h3></div>
+              <div><h3>Model Fine-Tuning</h3></div>
             </div>
           </div>
           <div class="skill-section hidden">
             <h2>Tools & Platforms:</h2>
             <div class="skillsContainer">
+              <div><h3>AWS</h3></div>
+              <div><h3>Azure</h3></div>
               <div><h3>Firebase</h3></div>
               <div><h3>Git</h3></div>
               <div><h3>GitLab CI/CD</h3></div>
@@ -437,8 +505,8 @@
           <div class="skill-section hidden">
             <h2>Practices:</h2>
             <div class="skillsContainer">
-              <div><h3>Test-Driven Development (TDD)</h3></div>
-              <div><h3>Domain-Driven Design (DDD)</h3></div>
+              <div><h3>Test-Driven Development</h3></div>
+              <div><h3>Domain-Driven Design</h3></div>
               <div><h3>Clean Architecture</h3></div>
             </div>
           </div>

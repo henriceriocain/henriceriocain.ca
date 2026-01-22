@@ -140,6 +140,7 @@ document.addEventListener("DOMContentLoaded", function() {
     const isCard2 = originalCard.classList.contains('card2');
     const isCard3 = originalCard.classList.contains('card3');
     const isCard4 = originalCard.classList.contains('card4');
+    const isCard5 = originalCard.classList.contains('card5');
     let attemptingClose = false;
     
     // Make it easy to trigger close if user scrolls up from near top
@@ -223,6 +224,8 @@ document.addEventListener("DOMContentLoaded", function() {
       hiddenContent = cloneCard.querySelector('.card3-hiddencontent');
     } else if (isCard4) {
       hiddenContent = cloneCard.querySelector('.card4-hiddencontent');
+    } else if (isCard5) {
+      hiddenContent = cloneCard.querySelector('.card5-hiddencontent');
     } else {
       hiddenContent = cloneCard.querySelector('.card-content');
     }
@@ -231,7 +234,7 @@ document.addEventListener("DOMContentLoaded", function() {
     document.body.appendChild(cloneCard);
     
     // Move the card's bottom bar into a fixed footer dock (viewport bottom)
-    const bottomBar = cloneCard.querySelector('.henriAI-bottom, .domyn-bottom, .daltutor-bottom');
+    const bottomBar = cloneCard.querySelector('.henriAI-bottom, .domyn-bottom, .daltutor-bottom, .docai-bottom');
     if (bottomBar) {
       const dock = document.createElement('div');
       dock.className = 'fullscreen-footer';
@@ -276,7 +279,7 @@ document.addEventListener("DOMContentLoaded", function() {
     const headerH2 = cloneCard.querySelector('.card-header h2');
     if (headerH2) cloneHeaderText = headerH2.textContent.trim();
     let originalCard = null;
-    const allCards = document.querySelectorAll('.card, .card2, .card3, .card4');
+    const allCards = document.querySelectorAll('.card, .card2, .card3, .card4, .card5');
     for (let card of allCards) {
       const cardH2 = card.querySelector('.card-header h2');
       if (cardH2 && cardH2.textContent.trim() === cloneHeaderText) {
@@ -290,9 +293,11 @@ document.addEventListener("DOMContentLoaded", function() {
         originalCard = document.querySelector('.card3');
       } else if (cloneCard.classList.contains('card4')) {
         originalCard = document.querySelector('.card4');
+      } else if (cloneCard.classList.contains('card5')) {
+        originalCard = document.querySelector('.card5');
       } else {
         // Fallback to Henri.AI card if we can't find a matching header
-        originalCard = document.querySelector('.card2'); 
+        originalCard = document.querySelector('.card2');
       }
     }
     cloneCard.classList.add('closing');
@@ -322,7 +327,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
   // CARD CLICK EVENT ATTACHMENT
   function attachCardClickEvents() {
-    const cards = document.querySelectorAll('.card, .card2, .card3, .card4');
+    const cards = document.querySelectorAll('.card, .card2, .card3, .card4, .card5');
     cards.forEach(card => {
       if (!card.dataset.listenerAttached) {
         card.addEventListener('mousedown', () => {

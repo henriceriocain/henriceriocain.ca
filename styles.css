@@ -226,6 +226,23 @@ body.expanded-mode .navbar {
     width: 100%;
     max-width: 600px;
   }
+
+  .projects-docai-row {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 30px;
+  }
+
+  .projects-docai-row .card5 {
+    width: 100%;
+    max-width: 600px;
+  }
+
+  .projects-docai-row .docai-container,
+  .projects-docai-row .docai-top {
+    width: 100%;
+  }
 }
 
 .lower-projects {
@@ -1157,6 +1174,328 @@ body.expanded-mode .navbar {
 }
 
 /* ======================================
+   DOCAI ORGANIZER CARD STYLING (CARD5 - FULL WIDTH)
+====================================== */
+.card5 .docai-container {
+  opacity: 1;
+  transition: opacity 0.2s ease-in-out;
+}
+
+.hidden-state.card5 .docai-container {
+  opacity: 0;
+}
+
+.card5:not(.hidden-state) .docai-container {
+  opacity: 1;
+}
+
+.card5 {
+  width: 100%;
+  max-width: 600px;
+  background: #121212;
+  border-radius: 20px;
+  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+.docai-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 600px;
+  margin: 0 auto;
+  border-radius: 20px;
+  position: relative;
+}
+
+.docai-top {
+  position: relative;
+  width: 100%;
+}
+
+.docai-background-image {
+  width: 100%;
+  height: 380px;
+  border-radius: 20px;
+  display: block;
+  background-image: url('DocAI/DocAILogo.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-color: #121212;
+}
+
+.docai-glass-text {
+  color: #FFFFFF;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+  letter-spacing: 0.3px;
+  font-weight: 500;
+}
+
+.card5 .docai-text-overlay {
+  position: absolute !important;
+  top: auto !important;
+  bottom: 76px !important;
+  left: 12px;
+  right: 20px;
+  z-index: 3;
+}
+
+.docai-text-overlay h1 {
+  font-size: 1em;
+  margin: 3px 0;
+  font-weight: 600;
+  line-height: 1.1;
+}
+
+#docai-top-text {
+  font-size: 0.75em;
+  opacity: 0.95;
+  margin: 0 0 3px 0;
+  line-height: 1.1;
+}
+
+#docai-bottom-text {
+  font-size: 0.65em;
+  opacity: 0.9;
+  margin: 3px 0 0 0;
+  line-height: 1.1;
+}
+
+.docai-bottom {
+  background: rgba(0, 0, 0, 0.85);
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.15);
+  backdrop-filter: blur(12.8px);
+  -webkit-backdrop-filter: blur(12.8px);
+  color: white;
+  padding: 15px;
+  border-radius: 0 0 20px 20px;
+  width: 100%;
+  max-width: 600px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+  z-index: 2;
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.docai-bottom .brand-title {
+  font-size: 1.5rem;
+  letter-spacing: -0.02em;
+  display: inline-flex;
+  align-items: center;
+  color: white;
+  font-weight: 700;
+}
+
+#docai-visit-button {
+  background-color: rgba(212, 212, 212, 0.5);
+  color: white;
+  font-weight: bold;
+  padding: 6px 13px;
+  margin-right: 20px;
+  border-radius: 35px;
+  cursor: pointer;
+  text-align: center;
+  transition: background-color 0.3s ease;
+}
+
+#docai-visit-button:hover {
+  background-color: rgb(191, 191, 191);
+}
+
+.card5-hiddencontent {
+  max-width: 600px;
+  padding: 40px;
+  background: #121212;
+  border-radius: 0 0 20px 20px;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  display: none;
+}
+
+.card5-hiddencontent h4 {
+  font-size: 18px;
+  margin-top: 30px;
+  color: white;
+}
+
+.card5-hiddencontent p {
+  font-size: 16px;
+  margin-bottom: 10px;
+  padding-left: 20px;
+  color: #D0D0D0;
+  line-height: 2;
+}
+
+.card5-hiddencontent .repo_link {
+  color: rgb(10, 132, 255);
+  text-decoration: none;
+}
+
+.card5.pressed .docai-container,
+.card5.pressed .docai-bottom,
+.card5.pressed .card5-hiddencontent {
+  opacity: 0;
+  transition: opacity 0.2s ease-in-out;
+}
+
+.card5.fullscreen-card.content-visible .docai-container,
+.card5.fullscreen-card.content-visible .docai-bottom,
+.card5.fullscreen-card.content-visible .card5-hiddencontent {
+  opacity: 1;
+  transition: opacity 0.3s ease-in-out;
+}
+
+/* Fullscreen overrides for Card5 (DocAI) */
+.card5.fullscreen-card {
+  max-width: none;
+  background-color: #121212;
+}
+
+.card5.fullscreen-card .docai-top {
+  position: relative;
+  width: 100vw;
+  height: 70vh;
+  border-radius: 20px 20px 0 0;
+  margin-top: -60px;
+  overflow: hidden;
+}
+
+.card5.fullscreen-card .docai-background-image {
+  width: 100%;
+  height: 100%;
+  background-size: contain;
+  border-radius: 0;
+  background-position: center;
+  background-color: #121212;
+}
+
+.card5.fullscreen-card .brand-title {
+  padding-left: 20px;
+}
+
+.card5.fullscreen-card #docai-visit-button {
+  margin-right: 20px;
+}
+
+.card5.fullscreen-card .card5-hiddencontent {
+  display: block;
+  opacity: 1;
+  transform: translateY(0);
+  margin-top: 20px;
+  padding: 40px 60px;
+  border-radius: 0;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: none;
+  width: 100%;
+  background: #121212;
+}
+
+.card5.fullscreen-card .docai-container {
+  width: 100%;
+  max-width: none;
+  margin: 0 auto;
+  position: relative;
+  background: transparent;
+}
+
+.card5.fullscreen-card .docai-text-overlay {
+  display: none;
+}
+
+.card5.fullscreen-card .docai-text-overlay h1 {
+  font-size: 1.3em;
+}
+
+.card5.fullscreen-card #docai-top-text {
+  font-size: 0.9em;
+}
+
+.card5.fullscreen-card #docai-bottom-text {
+  font-size: 0.8em;
+}
+
+/* DocAI card specific styling for arrow on gradient background */
+.card5.fullscreen-card::after {
+  color: rgba(255, 255, 255, 0.9);
+  text-shadow: 0 0 8px rgba(0, 0, 0, 0.4);
+  animation: arrowFadeIn 1.2s ease-out 1s forwards, swipeUpHint 2.5s ease-in-out infinite 2.2s;
+  opacity: 0;
+}
+
+.card5.fullscreen-card.closing::after {
+  animation: arrowFadeOut 0.6s ease-in forwards !important;
+}
+
+.card5.fullscreen-card.ready-to-close::after {
+  color: rgba(255, 255, 255, 1);
+  animation: swipeUpReady 1s ease-in-out infinite;
+}
+
+/* DocAI Report Section Styling */
+.docai-report-section {
+  background: #1a1a1a;
+  padding: 25px;
+  border-radius: 10px;
+  margin-top: 30px;
+  margin-bottom: 10px;
+  border: 1px solid #2a2a2a;
+}
+
+.docai-report-section h4 {
+  color: #ffffff;
+  margin-top: 0;
+  margin-bottom: 18px;
+  font-size: 18px;
+}
+
+.report-card {
+  display: flex;
+  gap: 18px;
+  align-items: flex-start;
+  background: transparent;
+  padding: 0;
+  border-radius: 0;
+}
+
+.report-icon {
+  font-size: 32px;
+  flex-shrink: 0;
+  opacity: 0.9;
+}
+
+.report-content {
+  flex: 1;
+}
+
+.report-title {
+  font-size: 16px;
+  font-weight: 600;
+  display: inline-block;
+  margin-bottom: 8px;
+  color: rgb(10, 132, 255) !important;
+  text-decoration: none;
+  transition: opacity 0.2s ease;
+}
+
+.report-title:hover {
+  opacity: 0.8;
+}
+
+.report-description {
+  margin: 0;
+  padding: 0;
+  color: #a0a0a0 !important;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+/* ======================================
    CARD CONTENT (FOR NORMAL CARD1)
 ====================================== */
 .fullscreen-card .card-content h4 {
@@ -1680,7 +2019,8 @@ body.expanded-mode .navbar {
 /* When docked, make the bar edge-to-edge and override old rules */
 .fullscreen-footer .henriAI-bottom,
 .fullscreen-footer .domyn-bottom,
-.fullscreen-footer .daltutor-bottom {
+.fullscreen-footer .daltutor-bottom,
+.fullscreen-footer .docai-bottom {
   width: 100%;
   max-width: none;
   margin: 0;
@@ -1699,7 +2039,8 @@ body.expanded-mode .navbar {
   }
   .fullscreen-footer .henriAI-bottom,
   .fullscreen-footer .domyn-bottom,
-  .fullscreen-footer .daltutor-bottom {
+  .fullscreen-footer .daltutor-bottom,
+  .fullscreen-footer .docai-bottom {
     padding: 8px 16px;
   }
 }
