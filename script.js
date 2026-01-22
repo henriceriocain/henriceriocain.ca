@@ -38,12 +38,11 @@ document.addEventListener("DOMContentLoaded", function() {
 
   // SCROLL REVEAL
   const hiddenElements = document.querySelectorAll('.hidden');
-  const revealObserver = new IntersectionObserver((entries) => {
+  const revealObserver = new IntersectionObserver((entries, observer) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
         entry.target.classList.add('show');
-      } else {
-        entry.target.classList.remove('show');
+        observer.unobserve(entry.target);
       }
     });
   }, { threshold: 0.1 });
