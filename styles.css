@@ -1796,6 +1796,26 @@ body.expanded-mode .navbar {
     font-size: 60px;
   }
 
+  .projects-middle-row {
+    display: contents;
+  }
+
+  .projects-title {
+    order: 1;
+  }
+
+  .projects-top-row {
+    order: 2;
+  }
+
+  .projects-middle-cards {
+    order: 3;
+  }
+
+  .projects-bottom-row {
+    order: 4;
+  }
+
   .projects-middle-cards {
     flex-direction: column;
     max-width: 100%;
