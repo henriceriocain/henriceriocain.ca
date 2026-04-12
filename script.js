@@ -102,20 +102,37 @@ document.addEventListener("DOMContentLoaded", function() {
     type();
     return () => clearTimeout(timeoutId);
   }
+  const homeIntro = document.querySelector('.home-intro');
   const typingConfigs = [
-    { target: document.getElementById('typingTarget'), text: "Hi, I'm Henri", speed: 75, observerTarget: document.getElementById('home') },
+    {
+      target: document.getElementById('typingTarget'),
+      text: "Hi, I'm Henri",
+      speed: 75,
+      observerTarget: document.getElementById('home'),
+      onStart: () => {
+        if (homeIntro) homeIntro.classList.remove('visible');
+      },
+      onComplete: () => {
+        if (homeIntro) homeIntro.classList.add('visible');
+      },
+      onReset: () => {
+        if (homeIntro) homeIntro.classList.remove('visible');
+      }
+    },
+    { target: document.getElementById('experienceTypingTarget'), text: "Experience", speed: 84, observerTarget: document.querySelector('.experience-heading') },
     { target: document.getElementById('projectsTypingTarget'), text: "Projects", speed: 85, observerTarget: document.querySelector('.projects-title') },
     { target: document.getElementById('skillsTypingTarget'), text: "Skills", speed: 83, observerTarget: document.querySelector('.skills-title') },
     { target: document.getElementById('contactTypingTarget'), text: "Get in touch", speed: 82, observerTarget: document.querySelector('.contact-title') },
   ];
   const typingCancelers = {};
   typingConfigs.forEach(config => {
-    const { target, text, speed, observerTarget } = config;
+    const { target, text, speed, observerTarget, onStart, onComplete, onReset } = config;
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
+          if (onStart) onStart();
           if (typingCancelers[target.id]) typingCancelers[target.id]();
-          typingCancelers[target.id] = createTypingAnimation(target, text, speed);
+          typingCancelers[target.id] = createTypingAnimation(target, text, speed, onComplete);
         } else {
           if (typingCancelers[target.id]) {
             typingCancelers[target.id]();
@@ -123,6 +140,7 @@ document.addEventListener("DOMContentLoaded", function() {
           }
           target.textContent = '';
           target.classList.remove('blink');
+          if (onReset) onReset();
         }
       });
     }, { threshold: 0.1 });

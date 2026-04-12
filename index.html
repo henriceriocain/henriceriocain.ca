@@ -23,6 +23,7 @@
     ====================================== -->
     <nav class="navbar">
       <a href="#home">home</a>
+      <a href="#experience">experience</a>
       <a href="#projects">projects</a>
       <a href="#skills">skills</a>
       <a href="#contact">contact</a>
@@ -34,8 +35,95 @@
     <div class="sway-element">
       <section id="home" class="hidden">
         <h1 id="typingTarget" class="hidden" aria-live="polite"></h1>
+        <p class="home-intro">
+          I'm a Computer Science student at Dalhousie who loves building software and gets really excited about machine learning and AI!
+        </p>
       </section>
     </div>
+
+    <!-- ======================================
+          EXPERIENCE SECTION
+    ====================================== -->
+    <section id="experience" class="sway-element">
+      <div class="experience-shell">
+        <div class="experience-heading">
+          <p class="experience-eyebrow hidden">Recent Work</p>
+          <h2 id="experienceTypingTarget" class="hidden" aria-live="polite"></h2>
+          <p class="experience-copy hidden">
+            A quick look at the roles where I've been building analytics pipelines, AI tools, and optimization work in real production settings.
+          </p>
+        </div>
+
+        <div class="experience-timeline" aria-label="Work experience timeline">
+          <article class="experience-item is-current hidden">
+            <div class="experience-card">
+              <div class="experience-card-top">
+                <div>
+                  <p class="experience-company">J.D. Irving, Limited</p>
+                  <h3>Data Scientist Intern</h3>
+                </div>
+                <div class="experience-meta">
+                  <span>Apr 2026 - Sep 2026</span>
+                  <span>Saint John, NB</span>
+                </div>
+              </div>
+
+              <p class="experience-summary">
+                Built analytics and machine learning workflows that turned enterprise data into tools people could actually use.
+              </p>
+
+              <ul class="experience-points">
+                <li>Built end-to-end analytics pipelines with Python, SQL, and Azure to source, clean, and model enterprise data for automation and decision-making.</li>
+                <li>Applied exploratory data analysis, feature engineering, and model evaluation to machine learning and statistical problems in operational settings.</li>
+                <li>Supported adoption of analytics tools through technical documentation, user training, and KPI tracking tied to model and business performance.</li>
+              </ul>
+
+              <div class="experience-stack" aria-label="Technologies used">
+                <span>Python</span>
+                <span>SQL</span>
+                <span>Azure</span>
+                <span>Machine Learning</span>
+                <span>Analytics Pipelines</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="experience-item hidden">
+            <div class="experience-card">
+              <div class="experience-card-top">
+                <div>
+                  <p class="experience-company">J.D. Irving, Limited</p>
+                  <h3>AI Innovation Student</h3>
+                </div>
+                <div class="experience-meta">
+                  <span>Jan 2026 - Apr 2026</span>
+                  <span>Saint John, NB</span>
+                </div>
+              </div>
+
+              <p class="experience-summary">
+                Focused on shipping practical AI and optimization work across enterprise systems and internal product teams.
+              </p>
+
+              <ul class="experience-points">
+                <li>Built AI agents in Copilot Studio and Azure that integrated enterprise REST APIs to automate cross-system workflows across multiple data sources.</li>
+                <li>Led feature development in Azure DevOps, working with stakeholders to define requirements and manage user stories, epics, and sprint delivery.</li>
+                <li>Contributed to a Gurobi mixed-integer optimization model for demand-driven production scheduling that enabled more than $100K in annual cost savings.</li>
+              </ul>
+
+              <div class="experience-stack" aria-label="Technologies used">
+                <span>Copilot Studio</span>
+                <span>Azure</span>
+                <span>REST APIs</span>
+                <span>Azure DevOps</span>
+                <span>Gurobi</span>
+                <span>Optimization</span>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
 
     <!-- ======================================
           PROJECTS SECTION
@@ -452,15 +540,18 @@
           SKILLS SECTION
     ====================================== -->
     <section id="skills" class="sway-element">
-      <div class="skills-container">
-        
-        <div class="skills-title hidden">
-          <h2 id="skillsTypingTarget" aria-live="polite"></h2>
+      <div class="skills-shell">
+        <div class="skills-title">
+          <p class="skills-eyebrow hidden">Technical Toolkit</p>
+          <h2 id="skillsTypingTarget" class="hidden" aria-live="polite"></h2>
+          <p class="skills-copy hidden">
+            The languages, platforms, and technical areas I keep reaching for when I'm building products, experiments, and systems.
+          </p>
         </div>
 
         <div class="skills-content">
           <div class="skill-section hidden">
-            <h2>Languages:</h2>
+            <h2>Languages</h2>
             <div class="skillsContainer">
               <div><h3>JavaScript</h3></div>
               <div><h3>Python</h3></div>
@@ -472,7 +563,7 @@
             </div>
           </div>
           <div class="skill-section hidden">
-            <h2>Machine Learning & Data:</h2>
+            <h2>Machine Learning &amp; Data</h2>
             <div class="skillsContainer">
               <div><h3>PyTorch</h3></div>
               <div><h3>TensorFlow</h3></div>
@@ -482,7 +573,7 @@
             </div>
           </div>
           <div class="skill-section hidden">
-            <h2>Tools & Platforms:</h2>
+            <h2>Tools &amp; Platforms</h2>
             <div class="skillsContainer">
               <div><h3>AWS</h3></div>
               <div><h3>Azure</h3></div>
@@ -496,7 +587,7 @@
             </div>
           </div>
           <div class="skill-section hidden">
-            <h2>Practices:</h2>
+            <h2>Practices</h2>
             <div class="skillsContainer">
               <div><h3>Test-Driven Development</h3></div>
               <div><h3>Domain-Driven Design</h3></div>
@@ -512,14 +603,49 @@
           CONTACT SECTION
     ====================================== -->
     <section id="contact" class="sway-element">
-      <div class="contact-title hidden">
-        <h2 id="contactTypingTarget" aria-live="polite"></h2>
-      </div>
-      <div class="hidden">
-        <p><b>email:</b> <span id="contactEmail">henriceriocain@dal.ca</span></p>
-        <p><b>linkedin:</b> <a href="https://www.linkedin.com/in/henriceriocain/" target="_blank" rel="noopener noreferrer">henriceriocain</a></p>
-        <p><b>github:</b> <a href="https://github.com/henriceriocain" target="_blank" rel="noopener noreferrer">henriceriocain</a></p>
-        <p><b>resume:</b> <a href="ResumeHenriCerioCain.pdf" target="_blank" rel="noopener noreferrer">click here!</a></p>
+      <div class="contact-shell">
+        <div class="contact-title">
+          <p class="contact-eyebrow hidden">Let's Connect</p>
+          <h2 id="contactTypingTarget" class="hidden" aria-live="polite"></h2>
+          <p class="contact-copy hidden">
+            If you want to talk about software, machine learning, AI, or a project you're building, feel free to reach out.
+          </p>
+        </div>
+
+        <div class="contact-content">
+          <div class="contact-primary hidden">
+            <p class="contact-label">Best Way To Reach Me</p>
+            <a class="contact-email-link" href="mailto:henriceriocain@dal.ca">henriceriocain@dal.ca</a>
+            <p class="contact-note">
+              Based in Halifax, NS. You can also find me on LinkedIn, GitHub, or check out my resume below.
+            </p>
+
+            <div class="contact-actions">
+              <a href="mailto:henriceriocain@dal.ca">Email Me</a>
+              <a href="ResumeHenriCerioCain.pdf" target="_blank" rel="noopener noreferrer">View Resume</a>
+            </div>
+          </div>
+
+          <div class="contact-links">
+            <a class="contact-link-card hidden" href="https://www.linkedin.com/in/henriceriocain/" target="_blank" rel="noopener noreferrer">
+              <span class="contact-link-label">LinkedIn</span>
+              <strong>henriceriocain</strong>
+              <span class="contact-link-meta">Connect professionally</span>
+            </a>
+
+            <a class="contact-link-card hidden" href="https://github.com/henriceriocain" target="_blank" rel="noopener noreferrer">
+              <span class="contact-link-label">GitHub</span>
+              <strong>henriceriocain</strong>
+              <span class="contact-link-meta">Browse my code and projects</span>
+            </a>
+
+            <a class="contact-link-card hidden" href="ResumeHenriCerioCain.pdf" target="_blank" rel="noopener noreferrer">
+              <span class="contact-link-label">Resume</span>
+              <strong>ResumeHenriCerioCain.pdf</strong>
+              <span class="contact-link-meta">Open the latest PDF version</span>
+            </a>
+          </div>
+        </div>
       </div>
     </section>
 
