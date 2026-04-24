@@ -3,6 +3,7 @@ document.addEventListener("DOMContentLoaded", function() {
   let isMouseDown = false;
   let pressedCard = null;
   let removeScrollUpListeners = null;
+  const projectsSection = document.getElementById('projects');
 
   // SWAY EFFECT
   const swayElements = document.querySelectorAll('.sway-element:not(.fullscreen-card)');
@@ -148,12 +149,30 @@ document.addEventListener("DOMContentLoaded", function() {
   });
 
   // SINGLE FULLSCREEN-CARD EXPANSION LOGIC
-  function expandCard(originalCard) {
+  function updateProjectUrl(projectId) {
+    const url = new URL(window.location.href);
+    if (projectId) {
+      url.searchParams.set('project', projectId);
+      url.hash = 'projects';
+    } else {
+      url.searchParams.delete('project');
+      if (url.hash === '#projects') {
+        url.hash = '';
+      }
+    }
+    window.history.replaceState({}, '', url);
+  }
+
+  function expandCard(originalCard, options = {}) {
+    const { updateUrl = true } = options;
     if (cloneCard) return;
     const rect = originalCard.getBoundingClientRect();
     cloneCard = originalCard.cloneNode(true);
     cloneCard.classList.remove('sway-element');
     cloneCard.classList.add('fullscreen-card');
+    if (originalCard.dataset.project) {
+      cloneCard.dataset.project = originalCard.dataset.project;
+    }
     const isCard2 = originalCard.classList.contains('card2');
     const isCard3 = originalCard.classList.contains('card3');
     const isCard4 = originalCard.classList.contains('card4');
@@ -249,6 +268,9 @@ document.addEventListener("DOMContentLoaded", function() {
     if (hiddenContent) hiddenContent.style.display = 'block';
 
     document.body.appendChild(cloneCard);
+    if (updateUrl && originalCard.dataset.project) {
+      updateProjectUrl(originalCard.dataset.project);
+    }
     
     // Move the card's bottom bar into a fixed footer dock (viewport bottom)
     const bottomBar = cloneCard.querySelector('.henriAI-bottom, .domyn-bottom, .daltutor-bottom, .docai-bottom');
@@ -286,7 +308,8 @@ document.addEventListener("DOMContentLoaded", function() {
     });
   }
 
-  function closeFullscreen() {
+  function closeFullscreen(options = {}) {
+    const { updateUrl = true } = options;
     if (!cloneCard) return;
     if (removeScrollUpListeners) {
       removeScrollUpListeners();
@@ -296,12 +319,17 @@ document.addEventListener("DOMContentLoaded", function() {
     const headerH2 = cloneCard.querySelector('.card-header h2');
     if (headerH2) cloneHeaderText = headerH2.textContent.trim();
     let originalCard = null;
+    if (cloneCard.dataset.project) {
+      originalCard = document.querySelector(`[data-project="${cloneCard.dataset.project}"]`);
+    }
     const allCards = document.querySelectorAll('.card, .card2, .card3, .card4, .card5');
-    for (let card of allCards) {
-      const cardH2 = card.querySelector('.card-header h2');
-      if (cardH2 && cardH2.textContent.trim() === cloneHeaderText) {
-        originalCard = card;
-        break;
+    if (!originalCard) {
+      for (let card of allCards) {
+        const cardH2 = card.querySelector('.card-header h2');
+        if (cardH2 && cardH2.textContent.trim() === cloneHeaderText) {
+          originalCard = card;
+          break;
+        }
       }
     }
     if (!originalCard) {
@@ -338,8 +366,30 @@ document.addEventListener("DOMContentLoaded", function() {
         originalCard.classList.remove('hidden-state');
         originalCard.classList.remove('pressed');
         originalCard.style.visibility = 'visible';
+        if (updateUrl) {
+          updateProjectUrl(null);
+        }
       }
     });
+  }
+
+  function openProjectFromUrl() {
+    const requestedProject = new URLSearchParams(window.location.search).get('project');
+    if (!requestedProject || cloneCard) return;
+
+    const targetCard = document.querySelector(`[data-project="${requestedProject}"]`);
+    if (!targetCard) return;
+
+    if (projectsSection) {
+      projectsSection.scrollIntoView({ block: 'start' });
+    }
+    targetCard.scrollIntoView({ block: 'center' });
+
+    window.setTimeout(() => {
+      if (!cloneCard) {
+        expandCard(targetCard, { updateUrl: false });
+      }
+    }, 650);
   }
 
   // CARD CLICK EVENT ATTACHMENT
@@ -394,4 +444,6 @@ document.addEventListener("DOMContentLoaded", function() {
       subtree: true 
     });
   }
+
+  openProjectFromUrl();
 });
