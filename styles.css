@@ -1049,6 +1049,11 @@ body.expanded-mode .navbar {
 /* ======================================
    CARD2 FULLSCREEN OVERRIDES
 ====================================== */
+.card2.fullscreen-card {
+  max-width: none;
+  background-color: #141414;
+}
+
 .card2.fullscreen-card .henriAI-top {
   position: relative;
   width: 100vw;
@@ -2322,6 +2327,148 @@ body.expanded-mode .navbar {
 
 }
 
+@media (max-width: 900px) {
+  .fullscreen-card {
+    padding: 32px 24px 28px;
+    border-radius: 0;
+  }
+
+  .fullscreen-card.has-footer {
+    padding-bottom: calc(var(--project-footer-h) + 28px + env(safe-area-inset-bottom));
+  }
+
+  .fullscreen-card .card-header,
+  .fullscreen-card .card-content {
+    width: 100%;
+  }
+
+  .fullscreen-card .card-content {
+    margin-top: 14px;
+  }
+
+  .fullscreen-card .card-content > div {
+    margin-top: 32px;
+  }
+
+  .fullscreen-card .card-header h2 {
+    font-size: clamp(2rem, 7vw, 3rem) !important;
+    line-height: 1.1;
+    margin: 12px 0 0;
+  }
+
+  .fullscreen-card .card-content h4,
+  .card2-hiddencontent h4,
+  .card3-hiddencontent h4,
+  .card4-hiddencontent h4,
+  .card5-hiddencontent h4 {
+    font-size: 1.05rem;
+    margin-top: 26px;
+  }
+
+  .fullscreen-card .card-content p,
+  .card2-hiddencontent p,
+  .card3-hiddencontent p,
+  .card4-hiddencontent p,
+  .card5-hiddencontent p {
+    padding-left: 0;
+    font-size: 0.98rem;
+    line-height: 1.78;
+  }
+
+  .card4-hiddencontent ul.feature-list,
+  .card4-hiddencontent ul.tech-list {
+    padding-left: 0;
+  }
+
+  .card4-hiddencontent ul.feature-list li,
+  .card4-hiddencontent ul.tech-list li {
+    padding-left: 0;
+    text-indent: 0;
+    font-size: 0.98rem;
+    line-height: 1.75;
+  }
+
+  .card2.fullscreen-card .henriAI-top,
+  .card3.fullscreen-card .domyn-top,
+  .card4.fullscreen-card .daltutor-top,
+  .card5.fullscreen-card .docai-top {
+    width: calc(100% + 48px);
+    height: clamp(260px, 46svh, 420px);
+    margin-top: -32px;
+    margin-left: -24px;
+    margin-right: -24px;
+    border-radius: 0 0 24px 24px;
+  }
+
+  .card2.fullscreen-card .card2-hiddencontent,
+  .card3.fullscreen-card .card3-hiddencontent,
+  .card4.fullscreen-card .card4-hiddencontent,
+  .card5.fullscreen-card .card5-hiddencontent {
+    width: calc(100% + 48px);
+    max-width: none;
+    margin: 14px -24px 0;
+    padding: 28px 24px 0;
+  }
+
+  .card4.fullscreen-card .daltutor-previews {
+    max-width: none;
+    gap: 12px;
+    padding: 6px 0 10px;
+  }
+
+  .card4.fullscreen-card .daltutor-previews img {
+    height: clamp(220px, 40vh, 420px);
+  }
+
+  .docai-report-section {
+    padding: 20px 18px;
+  }
+
+  .report-card {
+    gap: 14px;
+  }
+
+  .fullscreen-footer {
+    left: 0;
+    right: 0;
+    margin: 0;
+    padding: 8px 10px calc(8px + env(safe-area-inset-bottom));
+    border-radius: 16px 16px 0 0;
+  }
+
+  .fullscreen-footer .henriAI-bottom,
+  .fullscreen-footer .domyn-bottom,
+  .fullscreen-footer .daltutor-bottom,
+  .fullscreen-footer .docai-bottom {
+    padding: 10px 14px;
+    gap: 12px;
+    border-radius: 14px;
+  }
+
+  .fullscreen-footer .brand-title,
+  .fullscreen-footer .docai-bottom .brand-title,
+  .fullscreen-footer .domyn-highlight,
+  .fullscreen-footer .daltutor-highlight {
+    font-size: 1.2rem;
+  }
+
+  .fullscreen-footer .brand-title {
+    min-width: 0;
+    flex: 1;
+    padding-right: 12px;
+  }
+
+  .fullscreen-footer #visit-button,
+  .fullscreen-footer #domyn-visit-button,
+  .fullscreen-footer #daltutor-visit-button,
+  .fullscreen-footer #docai-visit-button {
+    flex-shrink: 0;
+    margin-right: 0;
+    font-size: 0.85rem;
+    padding: 6px 11px;
+  }
+}
+
 @media only screen and (max-width: 700px) {
   .projects-top-row,
   .projects-middle-row,
@@ -2362,6 +2509,124 @@ body.expanded-mode .navbar {
 
   .navbar a.active-link {
     font-size: 15px;
+  }
+
+  .fullscreen-card {
+    padding: 20px 18px 18px;
+  }
+
+  .fullscreen-card.has-footer {
+    padding-bottom: calc(var(--project-footer-h) + 22px + env(safe-area-inset-bottom));
+  }
+
+  .fullscreen-card .card-header h2 {
+    font-size: clamp(1.7rem, 9vw, 2.4rem) !important;
+    line-height: 1.08;
+    margin-top: 8px;
+  }
+
+  .fullscreen-card .card-content {
+    margin-top: 10px;
+  }
+
+  .fullscreen-card .card-content > div {
+    margin-top: 28px;
+  }
+
+  .fullscreen-card .card-content h4,
+  .card2-hiddencontent h4,
+  .card3-hiddencontent h4,
+  .card4-hiddencontent h4,
+  .card5-hiddencontent h4 {
+    font-size: 1rem;
+    margin-top: 24px;
+  }
+
+  .fullscreen-card .card-content p,
+  .card2-hiddencontent p,
+  .card3-hiddencontent p,
+  .card4-hiddencontent p,
+  .card5-hiddencontent p {
+    font-size: 0.95rem;
+    line-height: 1.72;
+  }
+
+  .card2.fullscreen-card .henriAI-top,
+  .card3.fullscreen-card .domyn-top,
+  .card4.fullscreen-card .daltutor-top,
+  .card5.fullscreen-card .docai-top {
+    width: calc(100% + 36px);
+    height: clamp(210px, 36svh, 300px);
+    margin-top: -20px;
+    margin-left: -18px;
+    margin-right: -18px;
+    border-radius: 0 0 20px 20px;
+  }
+
+  .card2.fullscreen-card .card2-hiddencontent,
+  .card3.fullscreen-card .card3-hiddencontent,
+  .card4.fullscreen-card .card4-hiddencontent,
+  .card5.fullscreen-card .card5-hiddencontent {
+    width: calc(100% + 36px);
+    margin: 10px -18px 0;
+    padding: 22px 18px 0;
+  }
+
+  .card4.fullscreen-card .daltutor-previews {
+    gap: 10px;
+    padding-bottom: 6px;
+  }
+
+  .card4.fullscreen-card .daltutor-previews img {
+    height: clamp(180px, 34vh, 280px);
+    border-radius: 14px;
+  }
+
+  .docai-report-section {
+    padding: 16px;
+  }
+
+  .report-card {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .report-icon {
+    font-size: 24px;
+  }
+
+  .fullscreen-footer {
+    padding: 6px 8px calc(8px + env(safe-area-inset-bottom));
+  }
+
+  .fullscreen-footer .henriAI-bottom,
+  .fullscreen-footer .domyn-bottom,
+  .fullscreen-footer .daltutor-bottom,
+  .fullscreen-footer .docai-bottom {
+    padding: 10px 12px;
+    gap: 10px;
+    border-radius: 14px;
+  }
+
+  .fullscreen-footer .brand-title,
+  .fullscreen-footer .docai-bottom .brand-title,
+  .fullscreen-footer .domyn-highlight,
+  .fullscreen-footer .daltutor-highlight {
+    font-size: 1.05rem;
+    line-height: 1.1;
+  }
+
+  .card4-hiddencontent ul.feature-list li,
+  .card4-hiddencontent ul.tech-list li {
+    font-size: 0.95rem;
+  }
+
+  .fullscreen-footer #visit-button,
+  .fullscreen-footer #domyn-visit-button,
+  .fullscreen-footer #daltutor-visit-button,
+  .fullscreen-footer #docai-visit-button {
+    font-size: 0.78rem;
+    padding: 5px 10px;
   }
 
   #home h1 {
