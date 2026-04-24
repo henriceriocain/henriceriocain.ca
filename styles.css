@@ -185,14 +185,6 @@ body.expanded-mode .navbar {
   top: 110px;
 }
 
-.experience-eyebrow {
-  font-size: 0.74rem;
-  font-weight: 700;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  color: #86868b;
-}
-
 .experience-heading h2 {
   font-size: 70px;
   color: #000000;
@@ -1920,14 +1912,6 @@ body.expanded-mode .navbar {
   top: 110px;
 }
 
-.skills-eyebrow {
-  font-size: 0.74rem;
-  font-weight: 700;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  color: #86868b;
-}
-
 .skills-title h2 {
   font-size: 70px;
   color: #000000;
@@ -2017,16 +2001,8 @@ body.expanded-mode .navbar {
   align-items: start;
 }
 
-.contact-eyebrow {
-  font-size: 0.74rem;
-  font-weight: 700;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  color: #86868b;
-}
-
 .contact-title h2 {
-  font-size: 70px;
+  font-size: 65px;
   color: #000000;
   align-self: flex-start;
   width: fit-content;
@@ -2656,11 +2632,6 @@ body.expanded-mode .navbar {
     font-size: 45px;
   }
 
-  .experience-eyebrow {
-    font-size: 0.68rem;
-    letter-spacing: 0.16em;
-  }
-
   .experience-copy {
     max-width: none;
     font-size: 0.98rem;
@@ -2735,11 +2706,6 @@ body.expanded-mode .navbar {
     font-size: 45px;
   }
 
-  .skills-eyebrow {
-    font-size: 0.68rem;
-    letter-spacing: 0.16em;
-  }
-
   .skills-copy {
     max-width: none;
     font-size: 0.98rem;
@@ -2784,11 +2750,6 @@ body.expanded-mode .navbar {
 
   .contact-title h2 {
     font-size: 45px;
-  }
-
-  .contact-eyebrow {
-    font-size: 0.68rem;
-    letter-spacing: 0.16em;
   }
 
   .contact-copy {
