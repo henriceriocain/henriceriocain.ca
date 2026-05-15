@@ -174,7 +174,6 @@ document.addEventListener("DOMContentLoaded", function() {
       cloneCard.dataset.project = originalCard.dataset.project;
     }
     const isCard2 = originalCard.classList.contains('card2');
-    const isCard3 = originalCard.classList.contains('card3');
     const isCard4 = originalCard.classList.contains('card4');
     const isCard5 = originalCard.classList.contains('card5');
     let attemptingClose = false;
@@ -256,8 +255,6 @@ document.addEventListener("DOMContentLoaded", function() {
     let hiddenContent;
     if (isCard2) {
       hiddenContent = cloneCard.querySelector('.card2-hiddencontent');
-    } else if (isCard3) {
-      hiddenContent = cloneCard.querySelector('.card3-hiddencontent');
     } else if (isCard4) {
       hiddenContent = cloneCard.querySelector('.card4-hiddencontent');
     } else if (isCard5) {
@@ -273,7 +270,7 @@ document.addEventListener("DOMContentLoaded", function() {
     }
     
     // Move the card's bottom bar into a fixed footer dock (viewport bottom)
-    const bottomBar = cloneCard.querySelector('.henriAI-bottom, .domyn-bottom, .daltutor-bottom, .docai-bottom');
+    const bottomBar = cloneCard.querySelector('.henriAI-bottom, .daltutor-bottom, .docai-bottom');
     if (bottomBar) {
       const dock = document.createElement('div');
       dock.className = 'fullscreen-footer';
@@ -322,7 +319,7 @@ document.addEventListener("DOMContentLoaded", function() {
     if (cloneCard.dataset.project) {
       originalCard = document.querySelector(`[data-project="${cloneCard.dataset.project}"]`);
     }
-    const allCards = document.querySelectorAll('.card, .card2, .card3, .card4, .card5');
+    const allCards = document.querySelectorAll('.card, .card2, .card4, .card5');
     if (!originalCard) {
       for (let card of allCards) {
         const cardH2 = card.querySelector('.card-header h2');
@@ -333,10 +330,7 @@ document.addEventListener("DOMContentLoaded", function() {
       }
     }
     if (!originalCard) {
-      // For card3 (Domyn), check if cloneCard is card3
-      if (cloneCard.classList.contains('card3')) {
-        originalCard = document.querySelector('.card3');
-      } else if (cloneCard.classList.contains('card4')) {
+      if (cloneCard.classList.contains('card4')) {
         originalCard = document.querySelector('.card4');
       } else if (cloneCard.classList.contains('card5')) {
         originalCard = document.querySelector('.card5');
@@ -393,16 +387,27 @@ document.addEventListener("DOMContentLoaded", function() {
   }
 
   // CARD CLICK EVENT ATTACHMENT
+  function isInteractiveTarget(target) {
+    return Boolean(target.closest('a, button, iframe'));
+  }
+
   function attachCardClickEvents() {
-    const cards = document.querySelectorAll('.card, .card2, .card3, .card4, .card5');
+    const cards = document.querySelectorAll('.card, .card2, .card4, .card5');
     cards.forEach(card => {
       if (!card.dataset.listenerAttached) {
-        card.addEventListener('mousedown', () => {
+        card.addEventListener('mousedown', (event) => {
+          if (isInteractiveTarget(event.target)) return;
           isMouseDown = true;
           card.classList.add('pressed');
           pressedCard = card;
         });
-        card.addEventListener('mouseup', () => {
+        card.addEventListener('mouseup', (event) => {
+          if (isInteractiveTarget(event.target)) {
+            isMouseDown = false;
+            pressedCard = null;
+            card.classList.remove('pressed');
+            return;
+          }
           if (pressedCard === card) {
             expandCard(card);
           }

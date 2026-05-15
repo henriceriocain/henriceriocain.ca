@@ -49,11 +49,45 @@
         <div class="experience-heading">
           <h2 id="experienceTypingTarget" class="hidden" aria-live="polite"></h2>
           <p class="experience-copy hidden">
-            A quick look at the roles where I've been building analytics pipelines, AI tools, and optimization work in real production settings.
+            A quick look at the places where I've been building enterprise AI/data systems and shipping an independent mobile product into real beta testing.
           </p>
         </div>
 
         <div class="experience-timeline" aria-label="Work experience timeline">
+          <article class="experience-item experience-item-domane is-current hidden">
+            <div class="experience-card experience-card-company experience-card-domane">
+              <div class="experience-company-header">
+                <div class="experience-company-main">
+                  <a class="experience-logo-link" href="https://domane.ca/" target="_blank" rel="noopener noreferrer" aria-label="Visit Domane website">
+                    <img class="experience-logo" src="Domane/domaneIcon.png" alt="Domane logo" loading="lazy" />
+                  </a>
+                  <div>
+                    <p class="experience-company">Domane</p>
+                    <h3>Founding Software Engineer</h3>
+                  </div>
+                </div>
+                <div class="experience-meta-stack">
+                  <p class="experience-company-meta">Jan 2025 - Present</p>
+                  <a class="experience-site-link" href="https://domane.ca/" target="_blank" rel="noopener noreferrer">domane.ca</a>
+                </div>
+              </div>
+
+              <div class="experience-role-list" aria-label="Domane product engineering work">
+                <div class="experience-role">
+                  <div class="experience-role-top">
+                    <h4>Mobile Product Engineering</h4>
+                  </div>
+
+                  <ul class="experience-points">
+                    <li>Built and launched a private beta for Domane, a mobile fitness app for personalized workout planning, active workout tracking, exercise history, daily logs, body-weight tracking, and body phase management.</li>
+                    <li>Engineered an offline-first mobile architecture using local SQLite persistence, durable sync operations, and Firebase replication, allowing users to start, log, complete, and review workouts without relying on network availability.</li>
+                    <li>Developed core product systems including exercise libraries, workout analytics, metric/imperial unit handling, timezone-safe date logic, and beta feedback workflows to support real-world user testing.</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </article>
+
           <article class="experience-item is-current hidden">
             <div class="experience-card experience-card-company">
               <div class="experience-company-header">
@@ -64,12 +98,8 @@
                 <p class="experience-company-meta">Jan 2026 - Sep 2026 · Saint John, NB</p>
               </div>
 
-              <p class="experience-summary">
-                Worked across analytics, AI automation, and optimization initiatives, moving from internal AI product work into production data science and machine learning delivery.
-              </p>
-
               <div class="experience-role-list" aria-label="Roles at J.D. Irving, Limited">
-                <section class="experience-role">
+                <div class="experience-role">
                   <div class="experience-role-top">
                     <h4>Data Scientist Intern</h4>
                     <span class="experience-role-date">Apr 2026 - Sep 2026</span>
@@ -80,9 +110,9 @@
                     <li>Applied exploratory data analysis, feature engineering, and model evaluation to machine learning and statistical problems in operational settings.</li>
                     <li>Supported adoption of analytics tools through technical documentation, user training, and KPI tracking tied to model and business performance.</li>
                   </ul>
-                </section>
+                </div>
 
-                <section class="experience-role">
+                <div class="experience-role">
                   <div class="experience-role-top">
                     <h4>AI Innovation Student</h4>
                     <span class="experience-role-date">Jan 2026 - Apr 2026</span>
@@ -93,7 +123,7 @@
                     <li>Led feature development in Azure DevOps, working with stakeholders to define requirements and manage user stories, epics, and sprint delivery.</li>
                     <li>Contributed to a Gurobi mixed-integer optimization model for demand-driven production scheduling that enabled more than $100K in annual cost savings.</li>
                   </ul>
-                </section>
+                </div>
               </div>
             </div>
           </article>
@@ -108,7 +138,7 @@
       <div class="projects-container">
         <div class="projects-cards">
 
-          <!-- TOP ROW - HENRI.AI + DOMYN -->
+          <!-- TOP ROW - HENRI.AI -->
           <div class="projects-top-row hidden">
             <div class="card2" data-project="henriai">
               <div class="henriAI-container">
@@ -150,26 +180,26 @@
                 <div>
                   <h4>Overview</h4>
                   <p>
-                    HenriAI is a fine-tuned conversational model built on <b>GPT-J-6B</b> using <b>QLoRA</b> (4-bit NF4, double quantization) with <b>LoRA</b> adapters on attention and MLP modules. Training uses a curated Q&A/instruction dataset tokenized to <b>512</b> tokens, <b>batch size 28</b>, <b>5 epochs</b>, <b>AdamW + cosine decay</b>, gradient accumulation, and gradient checkpointing; adapters are checkpointed each epoch for A/B selection and rollback. Inference loads the 4-bit base plus adapters via <b>PEFT</b> and serves a <b>FastAPI/Uvicorn</b> API with <b>/generate</b>, <b>/auth</b>, and <b>/healthz</b>; generation supports temperature/top-p and returns latency. Security and integration include <b>server-side password</b>, <b>CORS allowlist</b> to production domains, and exposure to the website via a <b>Cloudflare tunnel</b> with a runtime-injected API URL. Stack: PyTorch, Transformers, PEFT, BitsAndBytes, Accelerate, FastAPI, Uvicorn, Cloudflared, Colab A100.
+                    HenriAI is a fine-tuned conversational model built on <b>GPT-J-6B</b> using <b>QLoRA</b> (4-bit NF4, double quantization) with <b>LoRA</b> adapters on attention and MLP modules. Training uses a curated Q&amp;A/instruction dataset tokenized to <b>512</b> tokens, <b>batch size 28</b>, <b>5 epochs</b>, <b>AdamW + cosine decay</b>, gradient accumulation, and gradient checkpointing; adapters are checkpointed each epoch for A/B selection and rollback. Inference loads the 4-bit base plus adapters via <b>PEFT</b> and serves a <b>FastAPI/Uvicorn</b> API with <b>/generate</b>, <b>/auth</b>, and <b>/healthz</b>; generation supports temperature/top-p and returns latency. Security and integration include <b>server-side password</b>, <b>CORS allowlist</b> to production domains, and exposure to the website via a <b>Cloudflare tunnel</b> with a runtime-injected API URL. Stack: PyTorch, Transformers, PEFT, BitsAndBytes, Accelerate, FastAPI, Uvicorn, Cloudflared, Colab A100.
                   </p>
                 </div>
                 <div>
                   <h4>Technical Highlights</h4>
                   <p>• <b>QLoRA</b> fine-tune of <b>GPT-J-6B</b> (4-bit <b>NF4</b> + double quant) with <b>LoRA</b> adapters across attention and MLP layers.</p>
-                  <p>• Standardized <b>Q&A/instruction data pipeline</b> at <b>512-token</b> context for supervised causal training.</p>
+                  <p>• Standardized <b>Q&amp;A/instruction data pipeline</b> at <b>512-token</b> context for supervised causal training.</p>
                   <p>• Training regime: <b>AdamW</b> with <b>cosine schedule</b>, <b>gradient checkpointing/accumulation</b> for single-GPU efficiency.</p>
                   <p>• Versioned <b>LoRA adapter artifacts</b> enabling <b>A/B model selection</b> and rapid rollback.</p>
                   <p>• Production inference API (<b>FastAPI</b>): <b>/generate</b> with temperature/top-p controls, <b>/healthz</b>; low-latency <b>FP16/AMP</b> decoding.</p>
-                  <p>• Security & integration: <b>server-side auth</b>, strict <b>CORS allowlist</b>, <b>Cloudflare tunnel</b> powering live calls from henriai.ca.</p>
+                  <p>• Security &amp; integration: <b>server-side auth</b>, strict <b>CORS allowlist</b>, <b>Cloudflare tunnel</b> powering live calls from henriai.ca.</p>
                 </div>
                 <div>
                   <h4>Features</h4>
-                  <p>• Fine-tuned <b>GPT-J-6B</b> via <b>QLoRA</b> (4-bit <b>NF4</b>, <b>LoRA</b> on attention + MLP) for conversational Q&A.</p>
+                  <p>• Fine-tuned <b>GPT-J-6B</b> via <b>QLoRA</b> (4-bit <b>NF4</b>, <b>LoRA</b> on attention + MLP) for conversational Q&amp;A.</p>
                   <p>• <b>512-token</b> context encoding with standardized <b>Question/Answer</b> prompt template.</p>
                   <p>• <b>/generate</b> API with <b>max_new_tokens</b>, <b>temperature</b>, and <b>top_p</b> controls; returns response + <b>latency</b>.</p>
                   <p>• Mixed-precision (<b>FP16/AMP</b>) decoding with <b>caching</b> for low-latency inference.</p>
                   <p>• Versioned <b>LoRA adapters</b> (per-epoch) for <b>A/B selection</b> and instant rollback.</p>
-                  <p>• Health & auth endpoints: <b>/healthz</b> and <b>/auth</b> (server-side secret).</p>
+                  <p>• Health &amp; auth endpoints: <b>/healthz</b> and <b>/auth</b> (server-side secret).</p>
                   <p>• Strict <b>CORS allowlist</b> to production domains; no client-side secret exposure.</p>
                   <p>• Public access via <b>Cloudflare tunnel</b>; runtime API base injected into the frontend (<b>window.COLAB_API_URL</b>).</p>
                 </div>
@@ -177,78 +207,6 @@
                   <h4>Repository</h4>
                   <p>
                     <a href="https://github.com/henriceriocain/HenriAI" class="repo_link" target="_blank" rel="noopener noreferrer">Press on me!</a>
-                  </p>
-                </div>
-              </div>
-            </div>
-
-            <div class="card3" data-project="domyn">
-              <div class="domyn-container">
-                <div class="domyn-top">
-                  <div class="domyn-background-image"></div>
-                </div>
-
-                <div class="text-overlay domyn-text-overlay">
-                  <p id="domyn-top-text" class="domyn-glass-text">Software Engineering / Mobile Development</p>
-                  <h1 class="domyn-glass-text">Create Your Routine, Your Way</h1>
-                  <p id="domyn-bottom-text" class="domyn-glass-text">A workout application designed for customizability and user autonomy with elegant UI.</p>
-                </div>
-
-                <!-- Bottom Label -->
-                <div class="domyn-bottom">
-                  <div class="brand-title">
-                      <span class="domyn-highlight">Domyn</span>
-                  </div>
-                  <div id="domyn-visit-button">Coming Soon</div>
-                </div>
-              </div>
-
-              <div class="card3-hiddencontent">
-                <div>
-                  <h4>September Update</h4>
-                  <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%; background: #000; border-radius: 10px; margin-bottom: 30px;">
-                    <iframe src="https://www.youtube.com/embed/egimqcMsWgI"
-                            style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0;"
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                            allowfullscreen>
-                    </iframe>
-                  </div>
-                </div>
-                <div>
-                  <h4>Why Domyn?</h4>
-                  <p>Throughout my fitness journey, I've tested countless workout applications and found them frustrating to use. Most were overly complicated, forcing me into workouts I didn't want to do. They had intrusive advertisements and poor design that completely ruined the experience. When basic functionality was locked behind paywalls, I ended up just using my notes app to track progress. I built Domyn to solve these problems - giving users complete control over their workouts without the BS.</p>
-                </div>
-                <div>
-                  <h4>Overview</h4>
-                  <p>
-                    Domyn is a comprehensive workout application built from the ground up as a solo software engineering project. It empowers users to create fully customized workout routines with complete autonomy over their fitness journey, featuring an elegant and intuitive user interface designed for seamless user experience.
-                  </p>
-                </div>
-                <div>
-                  <h4>Technical Highlights</h4>
-                  <p><b>Large-Scale Architecture (73,768+ LOC):</b> Modular codebase with 37+ directories including services/, hooks/, utils/, components/, and types/ with 100% TypeScript implementation.</p>
-                  <p><b>React Native & Expo Stack:</b> Built with React Native 0.79.2, Expo SDK 53, React 19, and Expo Router 5.0 for file-based navigation with typed routes.</p>
-                  <p><b>Firebase Backend Integration:</b> Complex data modeling with 15+ specialized services, real-time synchronization, and reference-based architecture eliminating data duplication.</p>
-                  <p><b>Performance Optimization:</b> Custom hook architecture with 50+ specialized hooks, React.useMemo/useCallback throughout, and O(1) exercise history tracking.</p>
-                  <p><b>Advanced Data Management:</b> Multi-layer caching with EnhancedCacheManager, automatic PR detection across 3 exercise types, and optimistic updates for real-time workout tracking.</p>
-                  <p><b>Production-Ready Features:</b> Comprehensive error handling with ServiceError system, type-safe constants preventing runtime errors, and Jest testing infrastructure.</p>
-                </div>
-                <div>
-                  <h4>Features</h4>
-                  <p><b>Complete Customizability:</b> Users have full control over every aspect of their workout routines.</p>
-                  <p><b>Intuitive Design:</b> Clean, modern interface that prioritizes user experience and accessibility.</p>
-                  <p><b>User Autonomy:</b> No restrictions or predefined limitations - build workouts exactly how you want.</p>
-                </div>
-                <div>
-                  <h4>Development Journey</h4>
-                  <p>Developed entirely as a solo project, showcasing full-stack mobile development capabilities.</p>
-                  <p>Focus on delivering a premium user experience with powerful customization features.</p>
-                  <p>Demonstrates proficiency in UI/UX design, software architecture, and mobile development.</p>
-                </div>
-                <div>
-                  <h4>Repository</h4>
-                  <p>
-                    <a href="#" class="repo_link" target="_blank" rel="noopener noreferrer">Available upon release</a>
                   </p>
                 </div>
               </div>
@@ -410,7 +368,7 @@
                     <li><b>Tutor Tools:</b> Post tutorials with schedule, capacity, fee, and on‑campus location selection.</li>
                     <li><b>Live Availability:</b> See spots left and get real‑time updates as sessions fill.</li>
                     <li><b>Community Threads:</b> Ask questions, share tips, reply, and star helpful posts.</li>
-                    <li><b>Profiles & Reviews:</b> View tutor bios, ratings, and recent reviews to choose confidently.</li>
+                    <li><b>Profiles &amp; Reviews:</b> View tutor bios, ratings, and recent reviews to choose confidently.</li>
                     <li><b>Smart Notifications:</b> Stay on top of registrations, updates, and community activity.</li>
                     <li><b>Campus Map View:</b> Pins highlight buildings with upcoming sessions; jump straight to location lists.</li>
                   </ul>
@@ -422,7 +380,7 @@
                     <li><b>Faceted Search (MVVM, 6 ViewModels):</b> Topic/location/fee/degree/rating filters with RecyclerView adapter swap for Tutors vs Tutorials and client‑side filtering over cached RTDB snapshots.</li>
                     <li><b>In‑App Payments (PayPal SDK, sandbox):</b> Seamless free/paid registration flow with robust UI state and error handling.</li>
                     <li><b>Realtime UX (Firebase + FCM):</b> ValueEventListener‑driven capacity/listing updates, unified notifications across 2 RTDB nodes with a 99+ unread badge, plus FCM push (NotificationChannel, deep links).</li>
-                    <li><b>Data Consistency & Access Control:</b> Atomic multi‑path writes for replies/stars (O(1) write batch), author‑only edits, timestamp‑indexed reads, and guardrails for Tutor Tools (can’t disable with upcoming sessions).</li>
+                    <li><b>Data Consistency &amp; Access Control:</b> Atomic multi‑path writes for replies/stars (O(1) write batch), author‑only edits, timestamp‑indexed reads, and guardrails for Tutor Tools (can’t disable with upcoming sessions).</li>
                   </ul>
                 </div>
                 <div>
@@ -508,7 +466,6 @@
           </div>
 
         </div>
-      </div>
       </div>
     </section>
 
